@@ -1,4 +1,4 @@
-package unq.tpi.desapp.model.webservice;
+package unq.tpi.desapp.webservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
