@@ -4,3 +4,5 @@ jdk:
   - oraclejdk10
 install:
   - cd desapp-grupog && mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+script:
+  mvn test
