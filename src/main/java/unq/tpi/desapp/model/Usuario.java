@@ -1,8 +1,14 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
 public class Usuario {
+    @Id
+    @GeneratedValue
     private String name;
     private String surname;
     private String email;

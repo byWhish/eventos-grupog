@@ -1,3 +1,4 @@
-/home/whish/IdeaProjects/eventos/desapp-groupg-backend/src/main/java/unq/tpi/desapp/App.java
-/home/whish/IdeaProjects/eventos/desapp-groupg-backend/src/main/java/unq/tpi/desapp/service/Ping.java
-/home/whish/IdeaProjects/eventos/desapp-groupg-backend/src/main/java/unq/tpi/desapp/webservice/PingService.java
+/home/flow/Documentos/unq/eventos-grupog/src/main/java/unq/tpi/desapp/webservice/PingService.java
+/home/flow/Documentos/unq/eventos-grupog/src/main/java/unq/tpi/desapp/model/Usuario.java
+/home/flow/Documentos/unq/eventos-grupog/src/main/java/unq/tpi/desapp/App.java
+/home/flow/Documentos/unq/eventos-grupog/src/main/java/unq/tpi/desapp/service/Ping.java
