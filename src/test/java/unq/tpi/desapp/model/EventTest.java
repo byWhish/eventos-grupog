@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
-public class EventSpec {
+public class EventTest {
 
     @Test
     public void whenTheEventHasNoCollaboratorsItShouldHaveTheBasicPriceOfItsProducts() {
