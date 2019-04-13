@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Implement your script here.
-if ! mvn test then
+if ! mvn test; then
   exit 1
 fi
 # To terminate the git-flow action, return a non-zero exit code.
