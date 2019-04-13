@@ -1,4 +1,19 @@
 .idea/
 target/
 target/*
+.mvn
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+out/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

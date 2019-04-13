@@ -13,12 +13,11 @@ public class EventBuilder {
 
     public EventBuilder(String type) {
         this.event = createEventFromType(type);
-        User user = new UserBuilder().getUser();
+        Guest guest = new GuestBuilder(event).getGuest();
 
         this.event.setName("Un nombre");
         this.event.setDescription("Una descripcion");
-        this.event.setOwner(user);
-        this.event.setCollaborators(Arrays.asList(user));
+        this.event.setGuests(Arrays.asList(guest));
         this.event.setProducts(Arrays.asList(new ProductBuilder().getProduct()));
     }
 
@@ -48,14 +47,8 @@ public class EventBuilder {
         return this;
     }
 
-    public EventBuilder withOwner(User owner) {
-        this.event.setOwner(owner);
-
-        return this;
-    }
-
-    public EventBuilder withCollaborators(List<User> collaborators) {
-        this.event.setCollaborators(collaborators);
+    public EventBuilder withGuests(List<Guest> guests) {
+        this.event.setGuests(guests);
 
         return this;
     }

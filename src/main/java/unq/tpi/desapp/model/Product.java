@@ -1,7 +1,10 @@
 package unq.tpi.desapp.model;
 
+import java.awt.font.TextLayout;
+
 public class Product {
 
+    Integer id;
     Double price;
     Integer amountLimit;
 
@@ -21,5 +24,7 @@ public class Product {
         this.amountLimit = amountLimit;
     }
 
-
+    public Integer getId() {
+        return id;
+    }
 }

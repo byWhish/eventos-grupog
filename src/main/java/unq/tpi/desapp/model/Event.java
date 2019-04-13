@@ -1,30 +1,37 @@
 package unq.tpi.desapp.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class Event {
 
+    Integer id;
     String name;
     String description;
     List<Product> products;
-    List<User> collaborators;
-    User owner;
+    List<Guest> guests;
 
     public Double totalAmount() {
-        return products.stream().mapToDouble
-                (product -> priceFor(product)).sum();
+        return products.stream()
+                .mapToDouble(product -> priceFor(product))
+                .sum();
     }
 
     private Double priceFor(Product product) {
-        Double amountToBuy = Math.ceil(amountOfCollaborators() / (double) product.amountLimit);
+        Double amountToBuy = Math.ceil(amountOfCollaboratorsFor(product) / (double) product.amountLimit);
         return product.price * amountToBuy;
     }
 
-    private Integer amountOfCollaborators() {
-        Integer collaboratorAmount = collaborators.size();
+    private Integer amountOfCollaboratorsFor(Product product) {
+        Integer collaboratorAmount = collaboratorsFor(product).size();
         return collaboratorAmount == 0 ? 1 : collaboratorAmount;
     }
 
+    protected List<Guest> collaboratorsFor(Product product) {
+        return guests.stream()
+                .filter(guest -> guest.assists())
+                .collect(Collectors.toList());
+    }
 
     public String getName() {
         return name;
@@ -50,20 +57,12 @@ public abstract class Event {
         this.products = products;
     }
 
-    public List<User> getCollaborators() {
-        return collaborators;
+    public List<Guest> getGuests() {
+        return guests;
     }
 
-    public void setCollaborators(List<User> collaborators) {
-        this.collaborators = collaborators;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setGuests(List<Guest> guests) {
+        this.guests = guests;
     }
 
 }
