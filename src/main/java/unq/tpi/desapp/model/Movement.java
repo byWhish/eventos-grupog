@@ -6,12 +6,12 @@ public class Movement {
 
     private String originId;
     private String destinationId;
-    private double amount;
+    private Double amount;
     private Date timeStamp;
 
     public Movement() {}
 
-    public Movement(String originId, String destinationId, double amount) {
+    public Movement(String originId, String destinationId, Double amount) {
         this.amount = amount;
         this.originId = originId;
         this.destinationId = destinationId;
@@ -42,11 +42,11 @@ public class Movement {
         this.destinationId = destinationId;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 }

@@ -2,16 +2,16 @@ package unq.tpi.desapp.model;
 
 public class Account {
 
-    private double balance;
+    private Double balance;
     private String id;
     private String alias;
 
-    public void debit(double amount) {
+    public void debit(Double amount) throws Exception {
+        if ( amount > this.balance ) throw new Exception("Insuficient founds");
         this.balance = this.balance - amount;
     }
 
-    public void credit(double amount) throws Exception{
-        if ( amount > this.balance ) throw new Exception("Insuficient founds");
+    public void credit(Double amount) {
         this.balance = this.balance + amount;
     }
 
@@ -22,11 +22,11 @@ public class Account {
         this.alias = alias;
     }
 
-    public double getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

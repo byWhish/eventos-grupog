@@ -5,7 +5,7 @@ import unq.tpi.desapp.model.Account;
 public final class AccountBuilder {
     private Account account;
 
-    private AccountBuilder() {
+    public AccountBuilder() {
         account = new Account();
     }
 
@@ -13,7 +13,7 @@ public final class AccountBuilder {
         return new AccountBuilder();
     }
 
-    public AccountBuilder withBalance(double balance) {
+    public AccountBuilder withBalance(Double balance) {
         account.setBalance(balance);
         return this;
     }

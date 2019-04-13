@@ -25,7 +25,7 @@ public final class MovementBuilder {
         return this;
     }
 
-    public MovementBuilder withAmount(double amount) {
+    public MovementBuilder withAmount(Double amount) {
         movement.setAmount(amount);
         return this;
     }
