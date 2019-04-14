@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class AccountTest {
 
     @Test
-    public void whenDebitAnAmountToAnAccountThenBalanceResultInBalanceSubAmount() throws Exception {
+    public void whenDebitAnAmountToAnAccountThenBalanceResultInBalanceLessAmount() throws Exception {
         Account anAccount = new AccountBuilder().withBalance(100.0).build();
         anAccount.debit(10.0);
         assertEquals(anAccount.getBalance(), 90.0, 0);
@@ -27,7 +27,7 @@ public class AccountTest {
     }
 
     @Test
-    public void whenCreditAnAmountToAnAccountThenBalanceResultInBalanceAddAmount() {
+    public void whenCreditAnAmountToAnAccountThenBalanceResultInBalancePlusAmount() {
         Account anAccount = new AccountBuilder().withBalance(100.0).build();
         anAccount.credit(10.0);
         assertEquals(anAccount.getBalance(), 110.0, 0);
