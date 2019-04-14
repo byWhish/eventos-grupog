@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/byWhish/eventos-grupog.svg?branch=develop)](https://travis-ci.org/byWhish/eventos-grupog)
 
 ### Git Flow
 
