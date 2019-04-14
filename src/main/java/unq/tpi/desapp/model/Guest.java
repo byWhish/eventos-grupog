@@ -9,6 +9,7 @@ public class Guest {
     Event event;
     Boolean confirmedAssistance;
     List<Product> products;
+    Boolean isOwner;
 
     public Boolean assists() {
         return this.getConfirmedAssistance();
@@ -17,7 +18,7 @@ public class Guest {
     public Boolean collaboratesIn(Product product) {
         return products.stream()
                 .filter(guestProduct ->
-                        guestProduct.getId().equals(product.getId())
+                        guestProduct.getName().equals(product.getName())
                 )
                 .findFirst().isPresent();
     }
@@ -60,5 +61,13 @@ public class Guest {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public Boolean isOwner() {
+        return isOwner;
+    }
+
+    public void setOwner(Boolean owner) {
+        this.isOwner = owner;
     }
 }

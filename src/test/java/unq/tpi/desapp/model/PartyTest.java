@@ -16,7 +16,7 @@ public class PartyTest {
     @Test
     public void whenTheEventHasNoCollaboratorsItShouldHaveTheBasicPriceOfItsProducts() {
         Product product = new ProductBuilder().withAmountLimit(3).getProduct();
-        Event event = new EventBuilder("party")
+        Event event = getPartyBuilder()
                 .withProducts(Arrays.asList(product))
                 .withGuests(new ArrayList<>())
                 .getEvent();
@@ -29,7 +29,7 @@ public class PartyTest {
         Product product = new ProductBuilder().withAmountLimit(3).getProduct();
         Guest guest1 = createGuestThatConfirmedAssistance();
         Guest guest2 = createGuestThatConfirmedAssistance();
-        Event event = new EventBuilder("party")
+        Event event = getPartyBuilder()
                 .withProducts(Arrays.asList(product))
                 .withGuests(Arrays.asList(guest1, guest2))
                 .getEvent();
@@ -42,13 +42,42 @@ public class PartyTest {
         Product product = new ProductBuilder().withAmountLimit(1).getProduct();
         Guest guest1 = createGuestThatConfirmedAssistance();
         Guest guest2 = createGuestThatConfirmedAssistance();
-        Event event = new EventBuilder("party")
+        Event event = getPartyBuilder()
                 .withProducts(Arrays.asList(product))
                 .withGuests(Arrays.asList(guest1, guest2))
                 .getEvent();
 
         Double expectedAmount = product.price * 2;
         assertEquals(event.totalAmount(), expectedAmount);
+    }
+
+    @Test
+    public void whenTheOwnerHaveToPayWeGetTheAmount() {
+        Product product = new ProductBuilder().getProduct();
+        Guest guest = createGuestThatConfirmedAssistance();
+        guest.setOwner(Boolean.TRUE);
+        Event event = getPartyBuilder()
+                .withProducts(Arrays.asList(product))
+                .withGuests(Arrays.asList(guest))
+                .getEvent();
+
+        Double expectedAmount = product.price;
+        assertEquals(event.amountToPay(guest), expectedAmount);
+    }
+
+    @Test
+    public void whenAGuestHaveToPayHeDoesntHaveToPayAnything() {
+        Guest guest = createGuestThatConfirmedAssistance();
+        guest.setOwner(Boolean.FALSE);
+        Event event = getPartyBuilder()
+                .withGuests(Arrays.asList(guest))
+                .getEvent();
+
+        assertEquals(event.amountToPay(guest), (Double) 0.0);
+    }
+
+    private EventBuilder getPartyBuilder() {
+        return new EventBuilder("party");
     }
 
     private Guest createGuestThatConfirmedAssistance() {

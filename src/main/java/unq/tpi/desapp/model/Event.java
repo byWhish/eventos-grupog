@@ -17,6 +17,8 @@ public abstract class Event {
                 .sum();
     }
 
+    public abstract Double amountToPay(Guest guest);
+
     private Double priceFor(Product product) {
         Double amountToBuy = Math.ceil(amountOfCollaboratorsFor(product) / (double) product.amountLimit);
         return product.price * amountToBuy;
@@ -28,6 +30,10 @@ public abstract class Event {
     }
 
     protected List<Guest> collaboratorsFor(Product product) {
+        return collaborators();
+    }
+
+    protected List<Guest> collaborators() {
         return guests.stream()
                 .filter(guest -> guest.assists())
                 .collect(Collectors.toList());

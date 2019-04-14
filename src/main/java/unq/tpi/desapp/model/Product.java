@@ -7,6 +7,7 @@ public class Product {
     Integer id;
     Double price;
     Integer amountLimit;
+    String name;
 
     public Double getPrice() {
         return price;
@@ -26,5 +27,13 @@ public class Product {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
