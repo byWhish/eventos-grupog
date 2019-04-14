@@ -6,6 +6,7 @@ import unq.tpi.desapp.model.Product;
 import unq.tpi.desapp.model.User;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class GuestBuilder {
 
@@ -25,7 +26,7 @@ public class GuestBuilder {
         Product product = new ProductBuilder().getProduct();
         User user = new UserBuilder().getUser();
 
-        guest.setConfirmedAssistance(Boolean.FALSE);
+        guest.setConfirmedAssistance(Boolean.TRUE);
         guest.setProducts(Arrays.asList(product));
         guest.setUser(user);
         guest.setEvent(event);
@@ -40,5 +41,11 @@ public class GuestBuilder {
 
     public Guest getGuest() {
         return guest;
+    }
+
+    public GuestBuilder withProducts(List<Product> productList) {
+        guest.setProducts(productList);
+
+        return this;
     }
 }

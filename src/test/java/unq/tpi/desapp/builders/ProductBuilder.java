@@ -10,6 +10,7 @@ public class ProductBuilder {
         this.product = new Product();
         product.setPrice(10.60);
         product.setAmountLimit(3);
+        product.setName("Ketchup");
     }
 
     public ProductBuilder withPrice(Double price) {
