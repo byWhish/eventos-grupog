@@ -1,8 +1,11 @@
 #!/bin/sh
 
 # Implement your script here.
-if ! mvn test; then
+git pull origin develop
+if ! git merge --no-commit && ! mvn test; then
+  git merge --abort
   exit 1
 fi
 # To terminate the git-flow action, return a non-zero exit code.
+git merge --abort
 exit 0
