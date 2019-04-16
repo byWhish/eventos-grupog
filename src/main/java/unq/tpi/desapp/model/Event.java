@@ -1,5 +1,6 @@
 package unq.tpi.desapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,16 +11,24 @@ public abstract class Event {
     String description;
     List<Product> products;
     List<Guest> guests;
+    User owner;
+
+    public Event(){}
+
+    public Event(User owner, String name) {
+        this.owner = owner;
+        this.name = name;
+        this.products = new ArrayList<>();
+        this.guests = new ArrayList<>();
+    }
 
     public Double totalAmount() {
-        return products.stream()
-                .mapToDouble(product -> priceFor(product))
-                .sum();
+        return priceForProducts(this.products);
     }
 
     public abstract Double amountToPay(Guest guest);
 
-    private Double priceFor(Product product) {
+    protected Double priceFor(Product product) {
         Double amountToBuy = Math.ceil(amountOfCollaboratorsFor(product) / (double) product.amountLimit);
         return product.price * amountToBuy;
     }
@@ -35,8 +44,14 @@ public abstract class Event {
 
     protected List<Guest> collaborators() {
         return guests.stream()
-                .filter(guest -> guest.assists())
+                .filter(Guest::assists)
                 .collect(Collectors.toList());
+    }
+
+    protected Double priceForProducts(List<Product> productList) {
+        return productList.stream()
+                .mapToDouble(this::priceFor)
+                .sum();
     }
 
     public String getName() {

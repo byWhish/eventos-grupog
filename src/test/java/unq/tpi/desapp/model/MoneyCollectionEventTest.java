@@ -1,5 +1,6 @@
 package unq.tpi.desapp.model;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import unq.tpi.desapp.builders.EventBuilder;
 import unq.tpi.desapp.builders.GuestBuilder;
@@ -9,6 +10,8 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
+
+@Ignore
 public class MoneyCollectionEventTest {
 
     @Test

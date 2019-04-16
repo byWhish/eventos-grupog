@@ -17,7 +17,7 @@ public class BasketEventTest {
         Guest guest = new GuestBuilder().getGuest();
         Event event = new EventBuilder("basket").withGuests(Arrays.asList(guest)).getEvent();
 
-        assertEquals(event.amountToPay(guest), (Double) 0.0);
+        assertEquals(event.amountToPay(guest), (Double) 10.6);
     }
 
     @Test
