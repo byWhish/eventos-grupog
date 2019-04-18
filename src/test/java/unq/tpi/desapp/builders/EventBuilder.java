@@ -22,13 +22,14 @@ public class EventBuilder {
     }
 
     private Event createEventFromType(String type) {
-        Map<String, Event> eventMap = new HashMap() {{
+        HashMap eventMap = new HashMap() {{
             put("party", new PartyEvent());
-            put("moneyCollection", new MoneyCollectionEvent());
+            put("commonAccount", new CommonAccountEvent());
+            put("selfProduct", new SelfProductEvent());
             put("basket", new BasketEvent());
         }};
 
-        return eventMap.get(type);
+        return (Event) eventMap.get(type);
     }
 
     public Event getEvent() {

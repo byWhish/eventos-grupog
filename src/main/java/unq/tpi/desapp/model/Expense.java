@@ -7,6 +7,7 @@ public class Expense {
 
     public Expense(Guest guest, Double amount) {
         this.guest = guest;
+        this.amount = amount;
     }
 
     public Double getAmount() {
@@ -15,5 +16,13 @@ public class Expense {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
     }
 }
