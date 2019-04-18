@@ -2,7 +2,7 @@
 
 # Implement your script here.
 git pull origin develop
-if ! git merge --no-commit && ! mvn test; then
+if ! git merge develop --no-commit && ! mvn test; then
   git merge --abort
   exit 1
 fi
