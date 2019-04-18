@@ -4,7 +4,6 @@ import org.junit.Test;
 import unq.tpi.desapp.builders.EventBuilder;
 import unq.tpi.desapp.builders.GuestBuilder;
 import unq.tpi.desapp.builders.ProductBuilder;
-import unq.tpi.desapp.builders.UserBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;

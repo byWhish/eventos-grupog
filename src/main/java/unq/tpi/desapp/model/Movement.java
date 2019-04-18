@@ -4,18 +4,22 @@ import java.util.Date;
 
 public class Movement {
 
-    private String originId;
-    private String destinationId;
-    private Double amount;
-    private Date timeStamp;
+    public String type;
+    public String originId;
+    public String destinationId;
+    public Double amount;
+    public Date timeStamp;
+    public Account account;
 
     public Movement() {}
 
-    public Movement(String originId, String destinationId, Double amount) {
+    public Movement(Account account, String type, String originId, String destinationId, Double amount) {
+        this.type = type;
         this.amount = amount;
         this.originId = originId;
         this.destinationId = destinationId;
         this.timeStamp = new Date();
+        this.account = account;
     }
 
     public Date getTimeStamp() {
@@ -48,5 +52,21 @@ public class Movement {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
