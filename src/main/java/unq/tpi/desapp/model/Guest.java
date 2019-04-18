@@ -17,10 +17,9 @@ public class Guest {
 
     public Boolean collaboratesIn(Product product) {
         return products.stream()
-                .filter(guestProduct ->
+                .anyMatch(guestProduct ->
                         guestProduct.getName().equals(product.getName())
-                )
-                .findFirst().isPresent();
+                );
     }
 
     public Boolean getConfirmedAssistance() {

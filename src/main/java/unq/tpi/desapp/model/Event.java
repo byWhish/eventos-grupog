@@ -1,6 +1,7 @@
 package unq.tpi.desapp.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,12 +13,14 @@ public abstract class Event {
     List<Product> products;
     List<Guest> guests;
     User owner;
+    Date deadline;
 
     public Event(){}
 
-    public Event(User owner, String name) {
+    public Event(User owner, String name, Date deadline) {
         this.owner = owner;
         this.name = name;
+        this.deadline = deadline;
         this.products = new ArrayList<>();
         this.guests = new ArrayList<>();
     }
@@ -52,6 +55,14 @@ public abstract class Event {
         return productList.stream()
                 .mapToDouble(this::priceFor)
                 .sum();
+    }
+
+    protected void confirmAssistance(Guest guest) throws Exception {
+        if (this.deadline.before(new Date())) {
+            guest.setConfirmedAssistance(true);
+        } else {
+            throw new Exception("No es posible realizar la operacion");
+        }
     }
 
     public String getName() {
