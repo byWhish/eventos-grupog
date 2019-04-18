@@ -5,9 +5,15 @@ import java.util.stream.Collectors;
 
 public class BasketEvent extends Event {
 
+    public BasketEvent(){}
+
+    public BasketEvent(User owner, String name) {
+        super(owner, name);
+    }
+
     @Override
     public Double amountToPay(Guest guest) {
-        return 0.0;
+        return priceForProducts(guest.getProducts());
     }
 
     @Override
