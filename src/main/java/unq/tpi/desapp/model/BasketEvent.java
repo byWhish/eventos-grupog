@@ -1,5 +1,6 @@
 package unq.tpi.desapp.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,8 +8,8 @@ public class BasketEvent extends Event {
 
     public BasketEvent(){}
 
-    public BasketEvent(User owner, String name) {
-        super(owner, name);
+    public BasketEvent(User owner, String name, Date deadLine) {
+        super(owner, name, deadLine);
     }
 
     @Override

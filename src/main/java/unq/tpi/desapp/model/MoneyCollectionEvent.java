@@ -1,21 +1,16 @@
 package unq.tpi.desapp.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class MoneyCollectionEvent extends Event {
 
-    public List<Expense> expenses;
+    Account account;
 
     public MoneyCollectionEvent(){}
 
-    public MoneyCollectionEvent(User owner, String name) {
-        super(owner, name);
-        this.expenses = new ArrayList<>();
-    }
-
-    public void informExpenses(Expense expense) {
-        this.expenses.add(expense);
+    public MoneyCollectionEvent(User owner, String name, Date deadLine, Account account) {
+        super(owner, name, deadLine);
+        this.account = account;
     }
 
     @Override
@@ -23,9 +18,6 @@ public class MoneyCollectionEvent extends Event {
         return totalAmount() / collaborators().size();
     }
 
-    @Override
-    public Double totalAmount() {
-        return this.expenses.stream().mapToDouble(Expense::getAmount).sum();
-    }
-
 }
+
+
