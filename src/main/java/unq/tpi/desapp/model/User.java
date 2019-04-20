@@ -1,13 +1,22 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String name;
     private String surname;
     private String email;
     private String password;
     private Date birdDate;
+    @OneToOne
+    @JoinColumn( name = "account_id")
+    private Account account;
 
     public User(String name, String surname, String email, String password, Date birdDate){
         this.name = name;
