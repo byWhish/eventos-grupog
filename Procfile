@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/desapp-groupg-backend-1.0-SNAPSHOT.jar
