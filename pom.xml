@@ -93,6 +93,14 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>unq/tpi/desapp/webservice/**/*</exclude>
+                        <exclude>unq/tpi/desapp/service/**/*</exclude>
+                        <exclude>unq/tpi/desapp/persistence/**/*</exclude>
+                        <exclude>unq/tpi/desapp/App.class</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
