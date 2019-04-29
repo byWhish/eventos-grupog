@@ -1,26 +1,29 @@
 package unq.tpi.desapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import unq.tpi.desapp.model.User;
-import unq.tpi.desapp.persistence.UserRepo;
+import unq.tpi.desapp.persistence.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService {
 
     @Autowired
-    private UserRepo repo;
+    private UserRepository userRepository;
 
     public void saveUser(User user) {
-        this.repo.save(user);
+        this.userRepository.save(user);
     }
 
     public Optional<User> findUserById(long id) {
-        return repo.findById(id);
+        return userRepository.findById(id);
     }
 
     public List<User> findAllUsers() {
-        return (List<User>) this.repo.findAll();
+        return (List<User>) this.userRepository.findAll();
     }
 }

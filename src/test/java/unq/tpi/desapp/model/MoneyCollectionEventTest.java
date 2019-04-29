@@ -8,6 +8,7 @@ import unq.tpi.desapp.builders.GuestBuilder;
 import unq.tpi.desapp.builders.ProductBuilder;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -28,7 +29,8 @@ public class MoneyCollectionEventTest {
         Guest guest = new GuestBuilder().getGuest();
         Guest guest2 = new GuestBuilder().getGuest();
         Product product = new ProductBuilder().withAmountLimit(3).getProduct();
-        Event event = new EventBuilder("commonAccount").withGuests(Arrays.asList(guest, guest2)).withProducts(Arrays.asList(product)).getEvent();
+        Event event = new EventBuilder("commonAccount").withGuests(Arrays.asList(guest, guest2))
+                .withProducts(Collections.singletonList(product)).getEvent();
 
         Double halfPrice = product.price / 2;
         assertEquals(event.amountToPay(guest), halfPrice);

@@ -13,9 +13,4 @@ public class PingService {
     public Ping ping() {
         return new Ping();
     }
-
-    @GetMapping(value="/pong")
-    public Ping pong() {
-        return new Ping();
-    }
 }
