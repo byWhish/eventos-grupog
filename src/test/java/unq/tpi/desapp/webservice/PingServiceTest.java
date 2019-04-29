@@ -13,18 +13,18 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Ignore
+//@Ignore
 @RunWith(SpringRunner.class)
-@WebMvcTest(PingService.class)
-//@AutoConfigureMockMvc
+@WebMvcTest(controllers = PingService.class)
+@AutoConfigureMockMvc
 public class PingServiceTest {
 
     @Autowired
-    private MockMvc mvc;
+    private MockMvc mockMvc;
 
     @Test
     public void getPong() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/ping")
+        mockMvc.perform(MockMvcRequestBuilders.get("/ping")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

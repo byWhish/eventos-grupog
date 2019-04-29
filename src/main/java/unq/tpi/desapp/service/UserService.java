@@ -1,7 +1,6 @@
 package unq.tpi.desapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.UserRepository;
