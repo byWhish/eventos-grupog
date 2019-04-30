@@ -33,6 +33,6 @@ public class MoneyCollectionEventTest {
         event.informExpenses(aExpense);
         Double halfPrice = event.getExpenses() / 2;;
         assertEquals(event.amountToPay(guest), halfPrice);
-        assertEquals(event.getGuestExpeses(guest), aExpense.getAmount());
+        assertEquals(event.getGuestExpeses(aExpense.getGuest()), aExpense.getAmount());
     }
 }
