@@ -1,5 +1,6 @@
 package unq.tpi.desapp.persistence;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import unq.tpi.desapp.model.User;
 
 import static org.junit.Assert.assertEquals;
 
+//@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UserRepositoryTest {
@@ -19,22 +21,22 @@ public class UserRepositoryTest {
     private TestEntityManager entityManager;
 
     @Autowired
-//    private UserRepository userRepository;
+    private UserRepository userRepository;
 
     // write test cases here
 
     @Test
-    public void whenFindByEmailThenReturnUser() {
+    public void whenFindByName_thenReturnEmployee() {
         // given
-        User alex = new UserBuilder().withName("Alex").withEmail("hola@hola.com").getUser();
+        User alex = new UserBuilder().withEmail("hola@hola.com").getUser();
         entityManager.persist(alex);
         entityManager.flush();
 
         // when
-//        User found = userRepository.findUserByEmail(alex.getEmail()).orElse(null);
+        User found = userRepository.findUserByEmail(alex.getEmail()).orElse(null);
 
         // then
-//        assertEquals(found.getName(), alex.getName());
+        assertEquals(found.getName(), alex.getName());
     }
 
 }

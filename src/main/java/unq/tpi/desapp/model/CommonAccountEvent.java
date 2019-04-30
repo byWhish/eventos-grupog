@@ -6,13 +6,12 @@ import java.util.List;
 
 public class CommonAccountEvent extends MoneyCollectionEvent {
 
-    public List<Expense> expenses;
+    public List<Expense> expenses = new ArrayList<>();
 
     public CommonAccountEvent(){}
 
     public CommonAccountEvent(User owner, String name, Date deadLine, Account account) {
         super(owner, name, deadLine, account);
-        this.expenses = new ArrayList<>();
     }
 
     @Override
