@@ -24,8 +24,8 @@ public class CommonAccountEvent extends MoneyCollectionEvent {
         this.expenses.add(expense);
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
+    public Double getExpenses() {
+        return expenses.stream().mapToDouble(expense -> expense.getAmount()).sum();
     }
 
     public void setExpenses(List<Expense> expenses) {
