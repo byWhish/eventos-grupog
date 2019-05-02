@@ -1,10 +1,15 @@
 package unq.tpi.desapp.model;
 
-import java.awt.font.TextLayout;
+import javax.persistence.*;
 
+@Entity
+@Table(name="Product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+
     Double price;
     Integer amountLimit;
     String name;

@@ -1,9 +1,19 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
+@Entity
+@DiscriminatorValue(MoneyCollectionEvent.TYPE)
 public class MoneyCollectionEvent extends Event {
 
+    public static final String TYPE = "moneyCollection";
+
+    @OneToOne
+    @JoinColumn(name = "account_id")
     Account account;
 
     public MoneyCollectionEvent(){}

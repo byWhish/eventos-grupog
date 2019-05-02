@@ -1,10 +1,16 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Entity
+@DiscriminatorValue(BasketEvent.TYPE)
 public class BasketEvent extends Event {
+
+    public static final String TYPE = "basket";
 
     public BasketEvent(){}
 

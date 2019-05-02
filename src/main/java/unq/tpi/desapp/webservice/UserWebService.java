@@ -10,12 +10,11 @@ import unq.tpi.desapp.service.AccountsService;
 @RestController
 public class UserWebService {
 
-
     @Autowired
     AccountsService accountsService;
 
     @PostMapping(value="/user/add")
     public void postUser(@RequestBody User user) {
         accountsService.createUser(user);
-    };
+    }
 }

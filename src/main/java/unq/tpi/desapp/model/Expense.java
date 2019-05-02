@@ -1,8 +1,18 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Expense {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "guest_id")
     private Guest guest;
+
     private Double amount;
 
     public Expense(Guest guest, Double amount) {
