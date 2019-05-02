@@ -18,6 +18,14 @@ public class MoneyCollectionEvent extends Event {
         return totalAmount() / collaborators().size();
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
 }
 
 

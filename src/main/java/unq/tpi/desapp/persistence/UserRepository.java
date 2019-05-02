@@ -9,8 +9,8 @@ import unq.tpi.desapp.model.User;
 import java.util.Optional;
 
 @Repository
-public interface UserRepo extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
-    @Query("SELECT u.title FROM User u where u.email = :email")
-    Optional<User> findUserByEmail(@Param("email") Long email);
+    @Query("SELECT u FROM User u where u.email = :email")
+    Optional<User> findUserByEmail(@Param("email") String email);
 }

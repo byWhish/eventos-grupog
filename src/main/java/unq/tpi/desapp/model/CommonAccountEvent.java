@@ -6,13 +6,12 @@ import java.util.List;
 
 public class CommonAccountEvent extends MoneyCollectionEvent {
 
-    public List<Expense> expenses;
+    public List<Expense> expenses = new ArrayList<>();
 
     public CommonAccountEvent(){}
 
     public CommonAccountEvent(User owner, String name, Date deadLine, Account account) {
         super(owner, name, deadLine, account);
-        this.expenses = new ArrayList<>();
     }
 
     @Override
@@ -24,8 +23,8 @@ public class CommonAccountEvent extends MoneyCollectionEvent {
         this.expenses.add(expense);
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
+    public Double getExpenses() {
+        return expenses.stream().mapToDouble(expense -> expense.getAmount()).sum();
     }
 
     public void setExpenses(List<Expense> expenses) {

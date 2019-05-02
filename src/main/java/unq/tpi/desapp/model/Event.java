@@ -65,6 +65,22 @@ public abstract class Event {
         }
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
     public String getName() {
         return name;
     }
@@ -96,5 +112,6 @@ public abstract class Event {
     public void setGuests(List<Guest> guests) {
         this.guests = guests;
     }
+
 
 }

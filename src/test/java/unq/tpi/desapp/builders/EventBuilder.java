@@ -25,7 +25,6 @@ public class EventBuilder {
         HashMap eventMap = new HashMap() {{
             put("party", new PartyEvent());
             put("commonAccount", new CommonAccountEvent());
-            put("selfProduct", new SelfProductEvent());
             put("basket", new BasketEvent());
         }};
 
