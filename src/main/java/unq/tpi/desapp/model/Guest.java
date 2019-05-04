@@ -1,5 +1,7 @@
 package unq.tpi.desapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +15,12 @@ public class Guest {
     Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "user_id")
     User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn( name = "event_id")
+    @JsonBackReference
     Event event;
 
     Boolean confirmedAssistance;

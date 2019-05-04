@@ -1,5 +1,6 @@
 package unq.tpi.desapp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -28,6 +29,7 @@ public abstract class Event {
     List<Product> products;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     List<Guest> guests;
 
     @OneToOne
