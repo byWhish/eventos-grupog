@@ -1,15 +1,47 @@
 package unq.tpi.desapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="Guest")
 public class Guest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn( name = "event_id")
+    @JsonBackReference
     Event event;
+
     Boolean confirmedAssistance;
+
+    @ManyToMany
+    @JoinTable(
+            name = "GuestProduct",
+            joinColumns = @JoinColumn(name = "guest_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
     List<Product> products;
+
     Boolean isOwner;
+
+    public Guest(Event event, User user) {
+        this.event = event;
+        this.user = user;
+        this.confirmedAssistance = Boolean.FALSE;
+        this.products = new ArrayList<>();
+    }
+
+    public Guest(){}
 
     public Boolean assists() {
         return this.getConfirmedAssistance();

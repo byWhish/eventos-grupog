@@ -1,18 +1,41 @@
 package unq.tpi.desapp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Entity
+@Inheritance
+@DiscriminatorColumn(name="type")
+@Table(name="Event")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public abstract class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+
     String name;
     String description;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "event_id")
     List<Product> products;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     List<Guest> guests;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
     User owner;
+
     Date deadline;
 
     public Event(){}
@@ -112,6 +135,5 @@ public abstract class Event {
     public void setGuests(List<Guest> guests) {
         this.guests = guests;
     }
-
 
 }

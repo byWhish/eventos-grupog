@@ -41,7 +41,7 @@ public class UserBuilder {
     }
 
     public UserBuilder withBirthDate(Date birthdate) {
-        this.user.setBirdDate(birthdate);
+        this.user.setBirthDate(birthdate);
 
         return this;
     }

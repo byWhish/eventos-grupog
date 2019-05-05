@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,19 +20,21 @@ public class User {
     private String email;
     @JsonProperty("password")
     private String password;
-    @JsonProperty("birdDate")
-    private Date birdDate;
+    @JsonProperty("birthDate")
+    private Date birthDate;
     @OneToOne
     @JoinColumn( name = "account_id")
     private Account account;
 
-    public User(String name, String surname, String email, String password, Date birdDate){
+    public User(String name, String surname, String email, String password, Date birthDate){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.birdDate = birdDate;
+        this.birthDate = birthDate;
     }
+
+    public User(){}
 
     public String getPassword() {
         return password;
@@ -49,12 +52,12 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirdDate() {
-        return birdDate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirdDate(Date birdDate) {
-        this.birdDate = birdDate;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getName() {
