@@ -30,7 +30,7 @@ public class GuestBuilder {
         guest.setProducts(Arrays.asList(product));
         guest.setUser(user);
         guest.setEvent(event);
-        guest.setId(1);
+        guest.setId(1L);
     }
 
     public GuestBuilder withConfirmedAssistance(Boolean confirmedAssistance) {

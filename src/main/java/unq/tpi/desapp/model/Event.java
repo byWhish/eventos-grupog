@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 public abstract class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     String name;
     String description;
@@ -136,4 +136,11 @@ public abstract class Event {
         this.guests = guests;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

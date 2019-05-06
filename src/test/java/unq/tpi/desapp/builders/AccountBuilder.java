@@ -18,7 +18,7 @@ public final class AccountBuilder {
         return this;
     }
 
-    public AccountBuilder withId(String id) {
+    public AccountBuilder withId(Long id) {
         account.setId(id);
         return this;
     }

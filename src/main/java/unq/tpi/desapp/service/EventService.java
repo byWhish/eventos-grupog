@@ -7,7 +7,6 @@ import unq.tpi.desapp.model.Event;
 import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.EventRepository;
-import unq.tpi.desapp.persistence.exception.UsernameNotFoundException;
 import unq.tpi.desapp.request.EventRequest;
 
 import java.util.List;
@@ -51,6 +50,15 @@ public class EventService {
     private User getOwnerFromRequest(EventRequest eventRequest) {
         Integer userId = eventRequest.getOwnerId();
         return userService.findUserById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("No user found with id " + userId));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
+    }
+
+    public Event findEvent(Long eventId) {
+        return eventRepository.findById(eventId).orElseThrow(
+                () -> new IllegalArgumentException("Invalid event Id:" + eventId));
+    }
+
+    public void destroy(Long eventId) {
+        eventRepository.deleteById(eventId);
     }
 }

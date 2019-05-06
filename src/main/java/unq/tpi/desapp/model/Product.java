@@ -8,7 +8,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    Long id;
 
     Double price;
     Integer amountLimit;
@@ -30,7 +30,7 @@ public class Product {
         this.amountLimit = amountLimit;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

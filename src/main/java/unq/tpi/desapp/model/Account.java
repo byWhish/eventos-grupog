@@ -10,9 +10,12 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private Double balance;
-    private String id;
+
     private String alias;
+
     @OneToOne( mappedBy = "account")
     private User user;
 
@@ -27,7 +30,7 @@ public class Account {
 
     public Account() {}
 
-    public Account( String id, String alias, User user ){
+    public Account( Long id, String alias, User user ){
         this.id = id;
         this.alias = alias;
         this.user = user;
@@ -41,11 +44,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
