@@ -12,7 +12,7 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -62,11 +62,11 @@ public class Guest {
         this.confirmedAssistance = confirmedAssistance;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

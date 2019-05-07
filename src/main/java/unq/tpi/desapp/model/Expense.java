@@ -7,7 +7,7 @@ public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    Long id;
 
     @OneToOne
     @JoinColumn(name = "guest_id")
