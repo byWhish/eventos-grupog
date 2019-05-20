@@ -1,11 +1,13 @@
-package unq.tpi.desapp.model;
+package unq.tpi.desapp.model.event;
+
+import unq.tpi.desapp.model.Expense;
+import unq.tpi.desapp.model.Guest;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,10 +21,6 @@ public class CommonAccountEvent extends MoneyCollectionEvent {
     public List<Expense> expenses = new ArrayList<>();
 
     public CommonAccountEvent(){}
-
-    public CommonAccountEvent(User owner, String name, Date deadLine, Account account) {
-        super(owner, name, deadLine, account);
-    }
 
     @Override
     public Double totalAmount() {

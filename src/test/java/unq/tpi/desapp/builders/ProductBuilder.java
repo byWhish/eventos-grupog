@@ -8,20 +8,26 @@ public class ProductBuilder {
 
     public ProductBuilder() {
         this.product = new Product();
-        product.setPrice(10.60);
-        product.setAmountLimit(3);
-        product.setName("Ketchup");
+        withPrice(10.60);
+        withAmountLimit(3);
+        withName("Ketchup");
+    }
+
+    private ProductBuilder withName(String name) {
+        this.product.setName(name);
+        product.getName();
+        return this;
     }
 
     public ProductBuilder withPrice(Double price) {
         this.product.setPrice(price);
-
+        product.getPrice();
         return this;
     }
 
     public ProductBuilder withAmountLimit(Integer amountLimit) {
         this.product.setAmountLimit(amountLimit);
-
+        product.getAmountLimit();
         return this;
     }
 

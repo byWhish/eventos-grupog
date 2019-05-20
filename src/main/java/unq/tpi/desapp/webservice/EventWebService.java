@@ -2,7 +2,7 @@ package unq.tpi.desapp.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import unq.tpi.desapp.model.Event;
+import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.request.EventRequest;
 import unq.tpi.desapp.service.EventService;
 

@@ -3,7 +3,7 @@ package unq.tpi.desapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unq.tpi.desapp.factory.EventFactory;
-import unq.tpi.desapp.model.Event;
+import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.EventRepository;
@@ -29,6 +29,15 @@ public class EventService {
         return eventRepository.save(event);
     }
 
+    public Event findEvent(Long eventId) {
+        return eventRepository.findById(eventId).orElseThrow(
+                () -> new IllegalArgumentException("Invalid event Id:" + eventId));
+    }
+
+    public void destroy(Long eventId) {
+        eventRepository.deleteById(eventId);
+    }
+
     private Event requestToEvent(EventRequest eventRequest) {
         Event event = eventFactory.getEventFromType(eventRequest.getType());
         event.setDescription(eventRequest.getDescription());
@@ -36,6 +45,7 @@ public class EventService {
         event.setDeadline(eventRequest.getDeadline());
         event.setProducts(eventRequest.getProducts());
         event.setOwner(getOwnerFromRequest(eventRequest));
+
         event.setGuests(getGuestsFromRequest(eventRequest, event));
         return event;
     }
@@ -51,14 +61,5 @@ public class EventService {
         Integer userId = eventRequest.getOwnerId();
         return userService.findUserById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
-    }
-
-    public Event findEvent(Long eventId) {
-        return eventRepository.findById(eventId).orElseThrow(
-                () -> new IllegalArgumentException("Invalid event Id:" + eventId));
-    }
-
-    public void destroy(Long eventId) {
-        eventRepository.deleteById(eventId);
     }
 }

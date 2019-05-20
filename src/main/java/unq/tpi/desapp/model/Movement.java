@@ -13,15 +13,6 @@ public class Movement {
 
     public Movement() {}
 
-    public Movement(Account account, String type, String originId, String destinationId, Double amount) {
-        this.type = type;
-        this.amount = amount;
-        this.originId = originId;
-        this.destinationId = destinationId;
-        this.timeStamp = new Date();
-        this.account = account;
-    }
-
     public Date getTimeStamp() {
         return timeStamp;
     }
@@ -52,21 +43,5 @@ public class Movement {
 
     public void setAmount(Double amount) {
         this.amount = amount;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 }

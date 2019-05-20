@@ -12,16 +12,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @JsonProperty("name")
+
     private String name;
-    @JsonProperty("surname")
+
     private String surname;
-    @JsonProperty("email")
+
+    @Column(unique = true)
     private String email;
-    @JsonProperty("password")
+
     private String password;
-    @JsonProperty("birthDate")
+
     private Date birthDate;
+
     @OneToOne
     @JoinColumn( name = "account_id")
     private Account account;

@@ -1,6 +1,7 @@
 package unq.tpi.desapp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import unq.tpi.desapp.model.event.Event;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -41,8 +42,6 @@ public class Guest {
         this.products = new ArrayList<>();
     }
 
-    public Guest(){}
-
     public Boolean assists() {
         return this.getConfirmedAssistance();
     }
@@ -54,6 +53,14 @@ public class Guest {
                 );
     }
 
+    public void confirmAssistance() {
+        event.confirmAssistanceFor(this);
+    }
+
+    public void secureConfirmAssistance() {
+        this.setConfirmedAssistance(Boolean.TRUE);
+    }
+
     public Boolean getConfirmedAssistance() {
         return confirmedAssistance;
     }
@@ -62,24 +69,12 @@ public class Guest {
         this.confirmedAssistance = confirmedAssistance;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Event getEvent() {
-        return event;
     }
 
     public void setEvent(Event event) {

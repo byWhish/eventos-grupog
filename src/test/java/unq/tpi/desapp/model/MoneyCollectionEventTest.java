@@ -5,6 +5,7 @@ import org.junit.Test;
 import unq.tpi.desapp.builders.CommonAccountEventBuilder;
 import unq.tpi.desapp.builders.GuestBuilder;
 import unq.tpi.desapp.builders.ProductBuilder;
+import unq.tpi.desapp.model.event.CommonAccountEvent;
 
 import java.util.Arrays;
 import java.util.Collections;

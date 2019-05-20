@@ -1,6 +1,6 @@
 package unq.tpi.desapp.builders;
 
-import unq.tpi.desapp.model.Event;
+import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.model.Product;
 import unq.tpi.desapp.model.User;
@@ -22,12 +22,12 @@ public class GuestBuilder {
     }
 
     private void init(Event event) {
-        guest = new Guest();
         Product product = new ProductBuilder().getProduct();
         User user = new UserBuilder().getUser();
+        guest = new Guest(event, user);
 
-        guest.setConfirmedAssistance(Boolean.TRUE);
-        guest.setProducts(Arrays.asList(product));
+        withConfirmedAssistance(Boolean.TRUE);
+        withProducts(Arrays.asList(product));
         guest.setUser(user);
         guest.setEvent(event);
         guest.setId(1L);
@@ -35,7 +35,7 @@ public class GuestBuilder {
 
     public GuestBuilder withConfirmedAssistance(Boolean confirmedAssistance) {
         guest.setConfirmedAssistance(confirmedAssistance);
-
+        guest.getConfirmedAssistance();
         return this;
     }
 
@@ -45,6 +45,7 @@ public class GuestBuilder {
 
     public GuestBuilder withProducts(List<Product> productList) {
         guest.setProducts(productList);
+        guest.getProducts();
 
         return this;
     }

@@ -4,10 +4,19 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import unq.tpi.desapp.builders.AccountBuilder;
+import unq.tpi.desapp.builders.UserBuilder;
 
 import static org.junit.Assert.assertEquals;
 
 public class AccountTest {
+
+    @Test
+    public void creatingAnAccountWorksVeryWell() {
+        String alias = "alias";
+        Account anAccount = new Account(alias, new UserBuilder().getUser());
+
+        assertEquals(anAccount.getAlias(), alias);
+    }
 
     @Test
     public void whenDebitAnAmountToAnAccountThenBalanceResultInBalanceLessAmount() throws Exception {

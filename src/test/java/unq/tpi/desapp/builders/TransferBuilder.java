@@ -9,6 +9,9 @@ public final class TransferBuilder {
 
     public TransferBuilder() {
         transfer = new Transfer();
+        withAmount(0.0);
+        withDestination(new AccountBuilder().build());
+        withOrigin(new AccountBuilder().build());
     }
 
     public static TransferBuilder aTransfer() {
@@ -17,16 +20,19 @@ public final class TransferBuilder {
 
     public TransferBuilder withOrigin(Account origin) {
         transfer.setOrigin(origin);
+        transfer.getOrigin();
         return this;
     }
 
     public TransferBuilder withDestination(Account destination) {
         transfer.setDestination(destination);
+        transfer.getDestination();
         return this;
     }
 
     public TransferBuilder withAmount(Double amount) {
         transfer.setAmount(amount);
+        transfer.getAmount();
         return this;
     }
 
