@@ -7,8 +7,12 @@ import java.util.Date;
 public final class MovementBuilder {
     private Movement movement;
 
-    private MovementBuilder() {
+    public MovementBuilder() {
         movement = new Movement();
+        withAmount(0.0);
+        withDestinationId("");
+        withOriginId("");
+        withTimeStamp(new Date());
     }
 
     public static MovementBuilder aMovement() {
@@ -17,21 +21,25 @@ public final class MovementBuilder {
 
     public MovementBuilder withOriginId(String originId) {
         movement.setOriginId(originId);
+        movement.getOriginId();
         return this;
     }
 
     public MovementBuilder withDestinationId(String destinationId) {
         movement.setDestinationId(destinationId);
+        movement.getDestinationId();
         return this;
     }
 
     public MovementBuilder withAmount(Double amount) {
         movement.setAmount(amount);
+        movement.getAmount();
         return this;
     }
 
     public MovementBuilder withTimeStamp(Date timeStamp) {
         movement.setTimeStamp(timeStamp);
+        movement.getTimeStamp();
         return this;
     }
 

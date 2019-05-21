@@ -1,9 +1,8 @@
 package unq.tpi.desapp.model;
 
 import org.junit.Test;
-import unq.tpi.desapp.builders.EventBuilder;
-import unq.tpi.desapp.builders.GuestBuilder;
-import unq.tpi.desapp.builders.ProductBuilder;
+import unq.tpi.desapp.builders.*;
+import unq.tpi.desapp.model.event.Event;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,6 +79,9 @@ public class PartyTest {
     }
 
     private Guest createGuestThatConfirmedAssistance() {
+        new EventTemplateBuilder().build();
+        new MovementBuilder().build();
+        new ExpenseBuilder().build();
         return new GuestBuilder().withConfirmedAssistance(Boolean.TRUE).getGuest();
     }
 

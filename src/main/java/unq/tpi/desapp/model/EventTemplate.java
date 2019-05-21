@@ -6,10 +6,8 @@ import java.util.List;
 public class EventTemplate {
 
     private String name;
-    private List<Product> products = new ArrayList<>();
-    private List<User> users = new ArrayList<>();
-
-    public EventTemplate(){}
+    private List<Product> products;
+    private List<User> users;
 
     public EventTemplate(String name, List<Product> products){
         this.name = name;

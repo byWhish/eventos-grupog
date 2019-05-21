@@ -30,8 +30,7 @@ public class Account {
 
     public Account() {}
 
-    public Account( Long id, String alias, User user ){
-        this.id = id;
+    public Account(String alias, User user ){
         this.alias = alias;
         this.user = user;
     }

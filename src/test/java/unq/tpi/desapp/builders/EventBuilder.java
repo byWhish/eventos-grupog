@@ -1,11 +1,14 @@
 package unq.tpi.desapp.builders;
 
 import unq.tpi.desapp.model.*;
+import unq.tpi.desapp.model.event.BasketEvent;
+import unq.tpi.desapp.model.event.CommonAccountEvent;
+import unq.tpi.desapp.model.event.Event;
+import unq.tpi.desapp.model.event.PartyEvent;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EventBuilder {
 
@@ -15,10 +18,10 @@ public class EventBuilder {
         this.event = createEventFromType(type);
         Guest guest = new GuestBuilder(event).getGuest();
 
-        this.event.setName("Un nombre");
-        this.event.setDescription("Una descripcion");
-        this.event.setGuests(Arrays.asList(guest));
-        this.event.setProducts(Arrays.asList(new ProductBuilder().getProduct()));
+        withName("Un nombre");
+        withDescription("Una descripcion");
+        withGuests(Arrays.asList(guest));
+        withProducts(Arrays.asList(new ProductBuilder().getProduct()));
     }
 
     private Event createEventFromType(String type) {
@@ -37,24 +40,27 @@ public class EventBuilder {
 
     public EventBuilder withName(String name) {
         this.event.setName(name);
+        event.getName();
 
         return this;
     }
 
     public EventBuilder withDescription(String description) {
         this.event.setDescription(description);
-
+        event.getDescription();
         return this;
     }
 
     public EventBuilder withGuests(List<Guest> guests) {
         this.event.setGuests(guests);
+        event.getGuests();
 
         return this;
     }
 
     public EventBuilder withProducts(List<Product> products) {
         this.event.setProducts(products);
+        event.getProducts();
 
         return this;
     }

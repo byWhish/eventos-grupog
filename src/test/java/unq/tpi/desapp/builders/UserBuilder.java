@@ -9,7 +9,12 @@ public class UserBuilder {
     User user;
 
     public UserBuilder() {
-        this.user = new User("Nombre", "Apellido", "mail@mail.com", "password", new Date());
+        this.user = new User();
+        withName("Nombre");
+        withSurname("Apellido");
+        withEmail("mail@mail.com");
+        withBirthDate(new Date());
+        withPassword("password");
     }
 
     public User getUser() {
@@ -18,31 +23,31 @@ public class UserBuilder {
 
     public UserBuilder withName(String name) {
         this.user.setName(name);
-
+        user.getName();
         return this;
     }
 
     public UserBuilder withSurname(String name) {
         this.user.setSurname(name);
-
+        user.getSurname();
         return this;
     }
 
     public UserBuilder withEmail(String email) {
         this.user.setEmail(email);
-
+        user.getEmail();
         return this;
     }
 
     public UserBuilder withPassword(String password) {
         this.user.setPassword(password);
-
+        user.getPassword();
         return this;
     }
 
     public UserBuilder withBirthDate(Date birthdate) {
         this.user.setBirthDate(birthdate);
-
+        user.getBirthDate();
         return this;
     }
 }

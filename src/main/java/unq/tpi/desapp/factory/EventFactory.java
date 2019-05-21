@@ -1,7 +1,7 @@
 package unq.tpi.desapp.factory;
 
 import org.springframework.stereotype.Component;
-import unq.tpi.desapp.model.*;
+import unq.tpi.desapp.model.event.*;
 
 import java.util.HashMap;
 import java.util.Map;

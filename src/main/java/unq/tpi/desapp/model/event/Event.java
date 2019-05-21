@@ -1,8 +1,10 @@
-package unq.tpi.desapp.model;
+package unq.tpi.desapp.model.event;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import unq.tpi.desapp.model.Guest;
+import unq.tpi.desapp.model.Product;
+import unq.tpi.desapp.model.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -48,6 +50,14 @@ public abstract class Event {
         this.guests = new ArrayList<>();
     }
 
+    public Boolean hasExpired() {
+        return deadline.before(new Date());
+    }
+
+    public void confirmAssistanceFor(Guest guest) {
+        EventDeadlineState.stateFor(this).confirmAssistanceFor(guest);
+    }
+
     public Double totalAmount() {
         return priceForProducts(this.products);
     }
@@ -55,8 +65,8 @@ public abstract class Event {
     public abstract Double amountToPay(Guest guest);
 
     protected Double priceFor(Product product) {
-        Double amountToBuy = Math.ceil(amountOfCollaboratorsFor(product) / (double) product.amountLimit);
-        return product.price * amountToBuy;
+        Double amountToBuy = Math.ceil(amountOfCollaboratorsFor(product) / (double) product.getAmountLimit());
+        return product.getPrice() * amountToBuy;
     }
 
     private Integer amountOfCollaboratorsFor(Product product) {
@@ -64,7 +74,7 @@ public abstract class Event {
         return collaboratorAmount == 0 ? 1 : collaboratorAmount;
     }
 
-    protected List<Guest> collaboratorsFor(Product product) {
+    public List<Guest> collaboratorsFor(Product product) {
         return collaborators();
     }
 
@@ -78,14 +88,6 @@ public abstract class Event {
         return productList.stream()
                 .mapToDouble(this::priceFor)
                 .sum();
-    }
-
-    protected void confirmAssistance(Guest guest) throws Exception {
-        if (this.deadline.before(new Date())) {
-            guest.setConfirmedAssistance(true);
-        } else {
-            throw new Exception("No es posible realizar la operacion");
-        }
     }
 
     public User getOwner() {
@@ -134,13 +136,5 @@ public abstract class Event {
 
     public void setGuests(List<Guest> guests) {
         this.guests = guests;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
