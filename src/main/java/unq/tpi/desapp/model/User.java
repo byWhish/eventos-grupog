@@ -1,7 +1,5 @@
 package unq.tpi.desapp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,23 +26,15 @@ public class User {
     @JoinColumn( name = "account_id")
     private Account account;
 
-    public User(String name, String surname, String email, String password, Date birthDate){
+    public User(String name, String surname, String email, Date birthDate){
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.password = password;
         this.birthDate = birthDate;
+        this.account = new Account();
     }
 
     public User(){}
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getEmail() {
         return email;
