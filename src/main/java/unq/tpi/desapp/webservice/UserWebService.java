@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import unq.tpi.desapp.request.UserRequest;
-import unq.tpi.desapp.service.AccountsService;
+import unq.tpi.desapp.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserWebService {
 
     @Autowired
-    AccountsService accountsService;
+    UserService userService;
 
     @PostMapping
     public void postUser(@RequestBody UserRequest userRequest) {
-        accountsService.createUser(userRequest);
+        userService.createUser(userRequest);
     }
 }

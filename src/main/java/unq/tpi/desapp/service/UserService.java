@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.UserRepository;
+import unq.tpi.desapp.request.UserRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +15,14 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void saveUser(User user) {
-        this.userRepository.save(user);
+    public User createUser(UserRequest userRequest) {
+        User user = new User(
+                userRequest.getName(),
+                userRequest.getSurname(),
+                userRequest.getEmail(),
+                userRequest.getBirthDate()
+        );
+        return userRepository.save(user);
     }
 
     public Optional<User> findUserById(long id) {

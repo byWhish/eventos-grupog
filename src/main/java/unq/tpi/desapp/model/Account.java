@@ -1,10 +1,6 @@
 package unq.tpi.desapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -17,6 +13,9 @@ public class Account {
 
     private String alias;
 
+    @OneToOne( mappedBy = "account")
+    private User user;
+
     public void debit(Movement movement) throws Exception {
         if ( movement.amount > this.balance ) throw new Exception("Insuficient founds");
         this.balance = this.balance - movement.amount;
@@ -26,7 +25,10 @@ public class Account {
         this.balance = this.balance + movement.amount;
     }
 
-    public Account() {
+    public Account() {}
+
+    public Account(User user) {
+        this.user = user;
         this.balance = 0.0;
     }
 
@@ -52,5 +54,13 @@ public class Account {
 
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User users) {
+        this.user = user;
     }
 }

@@ -18,20 +18,17 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String password;
-
     private Date birthDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn( name = "account_id")
-    private Account account;
+    private Account account = new Account(this);
 
     public User(String name, String surname, String email, Date birthDate){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.birthDate = birthDate;
-        this.account = new Account();
     }
 
     public User(){}
