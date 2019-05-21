@@ -3,8 +3,8 @@ package unq.tpi.desapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unq.tpi.desapp.factory.EventFactory;
-import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.Guest;
+import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.EventRepository;
 import unq.tpi.desapp.request.EventRequest;
@@ -58,8 +58,7 @@ public class EventService {
     }
 
     private User getOwnerFromRequest(EventRequest eventRequest) {
-        Integer userId = eventRequest.getOwnerId();
-        return userService.findUserById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
+        Long userId = eventRequest.getOwnerId();
+        return userService.findUserById(userId);
     }
 }

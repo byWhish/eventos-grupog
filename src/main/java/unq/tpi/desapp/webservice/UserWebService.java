@@ -14,7 +14,7 @@ public class UserWebService {
     AccountsService accountsService;
 
     @PostMapping(value="/user/add")
-    public void postUser(@RequestBody User user) {
-        accountsService.createUser(user);
+    public User postUser(@RequestBody User user) {
+        return accountsService.createUser(user);
     }
 }

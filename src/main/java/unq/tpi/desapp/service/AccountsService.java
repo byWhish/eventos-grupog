@@ -10,7 +10,7 @@ public class AccountsService {
     @Autowired
     UserService userService;
 
-    public void createUser(User user) {
-        userService.saveUser(user);
+    public User createUser(User user) {
+        return userService.saveUser(user);
     };
 }

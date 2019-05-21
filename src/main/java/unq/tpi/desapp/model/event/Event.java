@@ -137,4 +137,6 @@ public abstract class Event {
     public void setGuests(List<Guest> guests) {
         this.guests = guests;
     }
+
+    public Long getId() { return id; }
 }

@@ -12,7 +12,7 @@ public class EventRequest {
     String description;
     List<Product> products;
     List<Long> userIds;
-    Integer ownerId;
+    Long ownerId;
     Date deadline;
 
     public String getType() {
@@ -55,11 +55,11 @@ public class EventRequest {
         this.userIds = userIds;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Integer ownerId) {
+    public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
 
