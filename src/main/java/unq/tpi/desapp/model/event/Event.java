@@ -7,6 +7,8 @@ import unq.tpi.desapp.model.Product;
 import unq.tpi.desapp.model.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,9 @@ public abstract class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @NotBlank(message = "El nombre es necesario")
     String name;
+
     String description;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -38,16 +42,27 @@ public abstract class Event {
     @JoinColumn(name = "user_id")
     User owner;
 
+    @NotNull(message = "La fecha de deadline es necesaria")
     Date deadline;
 
-    public Event(){}
+    @NotNull(message = "La fecha de creacion es necesaria")
+    Date createdAt;
 
-    public Event(User owner, String name, Date deadline) {
+    @NotNull(message = "La fecha de cuando sucede es necesaria")
+    Date heldAt;
+
+    public Event(){
+        this.createdAt = new Date();
+    }
+
+    public Event(User owner, String name, Date deadline, Date heldAt) {
         this.owner = owner;
         this.name = name;
         this.deadline = deadline;
+        this.heldAt = heldAt;
         this.products = new ArrayList<>();
         this.guests = new ArrayList<>();
+        this.createdAt= new Date();
     }
 
     public Boolean hasExpired() {
@@ -139,4 +154,20 @@ public abstract class Event {
     }
 
     public Long getId() { return id; }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getHeldAt() {
+        return heldAt;
+    }
+
+    public void setHeldAt(Date heldAt) {
+        this.heldAt = heldAt;
+    }
 }

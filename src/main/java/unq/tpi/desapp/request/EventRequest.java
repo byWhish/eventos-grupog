@@ -1,5 +1,6 @@
 package unq.tpi.desapp.request;
 
+import com.sun.istack.NotNull;
 import unq.tpi.desapp.model.Product;
 
 import java.util.Date;
@@ -7,13 +8,22 @@ import java.util.List;
 
 public class EventRequest {
 
+    @NotNull
     String type;
+    @NotNull
     String name;
+
     String description;
+    @NotNull
     List<Product> products;
+    @NotNull
     List<Long> userIds;
+    @NotNull
     Long ownerId;
+    @NotNull
     Date deadline;
+    @NotNull
+    Date heldAt;
 
     public String getType() {
         return type;
@@ -69,5 +79,13 @@ public class EventRequest {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public Date getHeldAt() {
+        return heldAt;
+    }
+
+    public void setHeldAt(Date heldAt) {
+        this.heldAt = heldAt;
     }
 }

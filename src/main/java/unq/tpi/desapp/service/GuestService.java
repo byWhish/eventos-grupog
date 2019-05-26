@@ -8,6 +8,8 @@ import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.persistence.GuestRepository;
 import unq.tpi.desapp.request.InvitationRequest;
 
+import javax.transaction.Transactional;
+
 @Service
 public class GuestService {
 
@@ -20,6 +22,7 @@ public class GuestService {
     @Autowired
     private GuestRepository guestRepository;
 
+    @Transactional
     public Guest inviteUser(InvitationRequest invitationRequest) {
         Event event = eventService.findEvent(invitationRequest.getEventId());
         User user = userService.findUserById(invitationRequest.getUserId());
@@ -33,12 +36,15 @@ public class GuestService {
         guestRepository.deleteById(guestId);
     }
 
+    @Transactional
     public Guest confirmAssistance(Long guestId) {
         Guest guest = findById(guestId);
         guest.confirmAssistance();
+        guestRepository.save(guest);
         return guest;
     }
 
+    @Transactional
     public Guest findById(Long guestId) {
         return guestRepository.findById(guestId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid guest id " + guestId));

@@ -6,15 +6,18 @@ import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.request.EventRequest;
 import unq.tpi.desapp.service.EventService;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/events")
 public class EventWebService {
 
     @Autowired
     EventService eventService;
 
     @PostMapping
-    public Event postEvent(@RequestBody EventRequest eventRequest) {
+    public Event postEvent(@Valid @RequestBody EventRequest eventRequest) {
         return eventService.createEvent(eventRequest);
     }
 
@@ -26,5 +29,22 @@ public class EventWebService {
     @DeleteMapping("/{eventId}")
     public void deleteEvent(@PathVariable Long eventId) {
         eventService.destroy(eventId);
+    }
+
+    // ongoing, lastest, popular
+
+    @GetMapping("/lastest/{userId}")
+    public List<Event> lastestEvents(@PathVariable Long userId) {
+        return eventService.findLastest(userId);
+    }
+
+    @GetMapping("/ongoing/{userId}")
+    public List<Event> ongoingEvents(@PathVariable Long userId) {
+        return eventService.findOngoing(userId);
+    }
+
+    @GetMapping("/popular")
+    public List<Event> popularEvents() {
+        return eventService.findPopular();
     }
 }

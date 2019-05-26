@@ -12,17 +12,17 @@ public class GuestWebService {
     @Autowired
     GuestService guestService;
 
-    @PostMapping("inviteUser")
+    @PostMapping("/inviteUser")
     public Guest inviteUser(@RequestBody InvitationRequest invitationRequest) {
         return guestService.inviteUser(invitationRequest);
     }
 
-    @PostMapping("confirmAssistance/{guestId}")
+    @PostMapping("/confirmAssistance/{guestId}")
     public Guest confirmAssistance(@PathVariable Long guestId) {
         return guestService.confirmAssistance(guestId);
     }
 
-    @DeleteMapping("cancelInvitation/{guestId}")
+    @DeleteMapping("/cancelInvitation/{guestId}")
     public void deleteEvent(@PathVariable Long guestId) {
         guestService.cancelInvitation(guestId);
     }
