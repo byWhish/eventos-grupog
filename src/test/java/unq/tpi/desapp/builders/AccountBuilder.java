@@ -10,12 +10,15 @@ public final class AccountBuilder {
         account = new Account();
         withBalance(0.0);
         withAlias("anAlias");
-        withUser(new UserBuilder().getUser());
         withId(1L);
     }
 
     public static AccountBuilder anAccount() {
         return new AccountBuilder();
+    }
+
+    public Account emptyAccount() {
+        return new AccountBuilder().withAlias("alias").withId((long) 1).withBalance(0.0).build();
     }
 
     public AccountBuilder withBalance(Double balance) {
@@ -33,13 +36,6 @@ public final class AccountBuilder {
     public AccountBuilder withAlias(String alias) {
         account.setAlias(alias);
         account.getAlias();
-        return this;
-    }
-
-    public AccountBuilder withUser(User user) {
-        account.setUser(user);
-        account.getUser();
-
         return this;
     }
 

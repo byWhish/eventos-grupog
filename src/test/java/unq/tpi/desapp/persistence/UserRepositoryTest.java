@@ -33,7 +33,7 @@ public class UserRepositoryTest {
         entityManager.flush();
 
         // when
-        User found = userRepository.findUserByEmail(alex.getEmail()).orElse(null);
+        User found = userRepository.findByEmail(alex.getEmail());
 
         // then
         assertEquals(found.getName(), alex.getName());
