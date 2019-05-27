@@ -10,8 +10,8 @@ public final class MovementBuilder {
     public MovementBuilder() {
         movement = new Movement();
         withAmount(0.0);
-        withDestinationId("");
-        withOriginId("");
+        withDestinationId(1L);
+        withOriginId(2L);
         withTimeStamp(new Date());
     }
 
@@ -19,13 +19,13 @@ public final class MovementBuilder {
         return new MovementBuilder();
     }
 
-    public MovementBuilder withOriginId(String originId) {
+    public MovementBuilder withOriginId(Long originId) {
         movement.setOriginId(originId);
         movement.getOriginId();
         return this;
     }
 
-    public MovementBuilder withDestinationId(String destinationId) {
+    public MovementBuilder withDestinationId(Long destinationId) {
         movement.setDestinationId(destinationId);
         movement.getDestinationId();
         return this;
@@ -40,6 +40,11 @@ public final class MovementBuilder {
     public MovementBuilder withTimeStamp(Date timeStamp) {
         movement.setTimeStamp(timeStamp);
         movement.getTimeStamp();
+        return this;
+    }
+
+    public MovementBuilder withDescription(String description) {
+        movement.setDescription(description);
         return this;
     }
 

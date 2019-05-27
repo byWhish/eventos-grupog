@@ -31,8 +31,6 @@ public class EventWebService {
         eventService.destroy(eventId);
     }
 
-    // ongoing, lastest, popular
-
     @GetMapping("/lastest/{userId}")
     public List<Event> lastestEvents(@PathVariable Long userId) {
         return eventService.findLastest(userId);

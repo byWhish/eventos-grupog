@@ -14,7 +14,6 @@ public class UserBuilder {
         withSurname("Apellido");
         withEmail("mail@mail.com");
         withBirthDate(new Date());
-        withPassword("password");
     }
 
     public User getUser() {
@@ -36,12 +35,6 @@ public class UserBuilder {
     public UserBuilder withEmail(String email) {
         this.user.setEmail(email);
         user.getEmail();
-        return this;
-    }
-
-    public UserBuilder withPassword(String password) {
-        this.user.setPassword(password);
-        user.getPassword();
         return this;
     }
 
