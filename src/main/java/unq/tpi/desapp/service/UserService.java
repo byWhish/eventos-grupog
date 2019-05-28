@@ -6,7 +6,6 @@ import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -14,12 +13,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void saveUser(User user) {
-        this.userRepository.save(user);
+    public User saveUser(User user) {
+        return this.userRepository.save(user);
     }
 
-    public Optional<User> findUserById(long id) {
-        return userRepository.findById(id);
+    public User findUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + id));
     }
 
     public List<User> findUsersByIds(List<Long> ids) {

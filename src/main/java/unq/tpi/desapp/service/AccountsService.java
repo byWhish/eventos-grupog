@@ -11,13 +11,13 @@ public class AccountsService {
     @Autowired
     UserService userService;
 
-    public void createUser(UserRequest userRequest) {
+    public User createUser(UserRequest userRequest) {
         User user = new User(
                 userRequest.getName(),
                 userRequest.getSurname(),
                 userRequest.getEmail(),
                 userRequest.getBirthDate()
         );
-        userService.saveUser(user);
+        return userService.saveUser(user);
     };
 }
