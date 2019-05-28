@@ -35,6 +35,8 @@ public class Guest {
 
     Boolean isOwner;
 
+    public Guest() {}
+
     public Guest(Event event, User user) {
         this.event = event;
         this.user = user;
@@ -96,4 +98,6 @@ public class Guest {
     public void setOwner(Boolean owner) {
         this.isOwner = owner;
     }
+
+    public Long getId() { return id; }
 }

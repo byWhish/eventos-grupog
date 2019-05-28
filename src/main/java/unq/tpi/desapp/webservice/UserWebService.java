@@ -17,8 +17,8 @@ public class UserWebService {
     AccountsService accountsService;
 
     @PostMapping
-    public void postUser(@RequestBody UserRequest userRequest) {
-        accountsService.createUser(userRequest);
+    public User postUser(@RequestBody UserRequest userRequest) {
+        return accountsService.createUser(userRequest);
     }
 
     @GetMapping("/all")

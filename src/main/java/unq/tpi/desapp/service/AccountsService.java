@@ -15,15 +15,15 @@ public class AccountsService {
     @Autowired
     private UserRepository userRepository;
 
-    public void createUser(UserRequest userRequest) {
-
+    public User createUser(UserRequest userRequest) {
         User user = new User(
                 userRequest.getName(),
                 userRequest.getSurname(),
                 userRequest.getEmail(),
                 userRequest.getBirthDate()
         );
-        this.saveUser(user);
+
+        return this.saveUser(user);
     };
 
 
@@ -31,8 +31,8 @@ public class AccountsService {
         users.forEach( user -> this.createUser(user));
     }
 
-    public void saveUser(User user) {
-        this.userRepository.save(user);
+    public User saveUser(User user) {
+        return this.userRepository.save(user);
     }
 
     public void saveUsers(List<User> users) {
