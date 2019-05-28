@@ -23,7 +23,7 @@ public class EventService {
     private EventFactory eventFactory;
 
     @Autowired
-    private UserService userService;
+    private AccountsService accountsService;
 
     @Transactional
     public Event createEvent(EventRequest eventRequest) {
@@ -56,7 +56,7 @@ public class EventService {
     }
 
     private List<Guest> getGuestsFromRequest(EventRequest eventRequest, Event event) {
-        List<User> users = userService.findUsersByIds(eventRequest.getUserIds());
+        List<User> users = accountsService.findUsersByIds(eventRequest.getUserIds());
         return users.stream().map(
                 (user) -> new Guest(event, user)
         ).collect(Collectors.toList());
@@ -64,7 +64,8 @@ public class EventService {
 
     private User getOwnerFromRequest(EventRequest eventRequest) {
         Long userId = eventRequest.getOwnerId();
-        return userService.findUserById(userId);
+        return accountsService.findUserById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
     }
 
     @Transactional

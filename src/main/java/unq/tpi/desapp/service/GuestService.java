@@ -17,7 +17,7 @@ public class GuestService {
     EventService eventService;
 
     @Autowired
-    UserService userService;
+    AccountsService accountsService;
 
     @Autowired
     private GuestRepository guestRepository;
@@ -25,7 +25,7 @@ public class GuestService {
     @Transactional
     public Guest inviteUser(InvitationRequest invitationRequest) {
         Event event = eventService.findEvent(invitationRequest.getEventId());
-        User user = userService.findUserById(invitationRequest.getUserId());
+        User user = accountsService.findUserById(invitationRequest.getUserId()).orElse(null);
 
         Guest guest = new Guest(event, user);
         guestRepository.save(guest);

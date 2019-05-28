@@ -12,7 +12,7 @@ import unq.tpi.desapp.model.User;
 
 import static org.junit.Assert.assertEquals;
 
-//@Ignore
+@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UserRepositoryTest {
