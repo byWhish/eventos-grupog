@@ -1,0 +1,87 @@
+[
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Asado"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Fernet"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Manaos"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Papas fritas"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Pan"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Bomdiola"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Chori"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Chinchu"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Paty"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Ensalada"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Carbon"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Salon"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Quincho"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Helado"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Brownie loco"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Pizza"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Tang"
+  }
+]

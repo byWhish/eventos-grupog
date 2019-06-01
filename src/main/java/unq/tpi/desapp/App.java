@@ -7,8 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import unq.tpi.desapp.model.Product;
 import unq.tpi.desapp.request.UserRequest;
 import unq.tpi.desapp.service.AccountsService;
+import unq.tpi.desapp.service.ProductService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +24,7 @@ public class App {
     }
 
     @Bean
-    CommandLineRunner runner(AccountsService accountsService) {
+    CommandLineRunner userrunner(AccountsService accountsService) {
         return args -> {
             // read json and write to db
             ObjectMapper mapper = new ObjectMapper();
@@ -34,6 +36,23 @@ public class App {
                 System.out.println("Users Saved!");
             } catch (IOException e){
                 System.out.println("Unable to save users: " + e.getMessage());
+            }
+        };
+    }
+
+    @Bean
+    CommandLineRunner productrunner(ProductService productService) {
+        return args -> {
+            // read json and write to db
+            ObjectMapper mapper = new ObjectMapper();
+            TypeReference<List<Product>> typeReference = new TypeReference<List<Product>>(){};
+            InputStream inputStream = TypeReference.class.getResourceAsStream("/json/products.json");
+            try {
+                List<Product> products = mapper.readValue(inputStream,typeReference);
+                productService.createProducts(products);
+                System.out.println("Products Saved!");
+            } catch (IOException e){
+                System.out.println("Unable to save products: " + e.getMessage());
             }
         };
     }
