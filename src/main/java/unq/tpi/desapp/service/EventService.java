@@ -25,10 +25,14 @@ public class EventService {
     @Autowired
     private AccountsService accountsService;
 
+    @Autowired
+    private GuestService guestService;
+
     @Transactional
     public Event createEvent(EventRequest eventRequest) {
-        Event event = requestToEvent(eventRequest);
-        return eventRepository.save(event);
+        Event event = eventRepository.save(requestToEvent(eventRequest));
+        event.getGuests().stream().forEach(guest -> guestService.sendInvitationMail(guest));
+        return event;
     }
 
     @Transactional

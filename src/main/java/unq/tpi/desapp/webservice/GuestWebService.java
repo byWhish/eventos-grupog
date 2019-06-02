@@ -6,14 +6,20 @@ import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.request.InvitationRequest;
 import unq.tpi.desapp.service.GuestService;
 
+import java.util.logging.Logger;
+
 @RestController
 public class GuestWebService {
 
     @Autowired
     GuestService guestService;
 
+    private Logger logger = Logger.getGlobal();
+
+
     @PostMapping("/inviteUser")
     public Guest inviteUser(@RequestBody InvitationRequest invitationRequest) {
+        logger.info("inicia proceso de /inviteUser");
         return guestService.inviteUser(invitationRequest);
     }
 
