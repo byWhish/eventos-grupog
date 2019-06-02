@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Merienda loca",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Brownie loco"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Helado"
+      }
+    ]
+  },
+  {
+    "name": "Asado con Fernando",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Carbon"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      }
+    ]
+  }
+
+]

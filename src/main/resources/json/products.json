@@ -83,5 +83,10 @@
     "price": "10.0",
     "amountLimit": 1,
     "name": "Tang"
+  },
+  {
+    "price": "10.0",
+    "amountLimit": 1,
+    "name": "Mate"
   }
 ]

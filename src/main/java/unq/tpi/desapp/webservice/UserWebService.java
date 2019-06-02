@@ -9,7 +9,6 @@ import unq.tpi.desapp.service.AccountsService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "https://eventos-grupog.herokuapp.com/"})
 @RequestMapping("/user")
 public class UserWebService {
 

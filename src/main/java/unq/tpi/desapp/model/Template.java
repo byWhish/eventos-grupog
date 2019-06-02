@@ -1,18 +1,35 @@
 package unq.tpi.desapp.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 
-public class EventTemplate {
+@Entity
+public class Template {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "template_id")
     private List<Product> products;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "template_id")
     private List<User> users;
 
-    public EventTemplate(String name, List<Product> products){
+    public Template() {};
+
+    public Template(String name, List<Product> products){
         this.name = name;
         this.products = products;
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getName() {
         return name;

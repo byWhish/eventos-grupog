@@ -7,7 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import unq.tpi.desapp.model.Product;
+import unq.tpi.desapp.model.Template;
 import unq.tpi.desapp.request.UserRequest;
 import unq.tpi.desapp.service.AccountsService;
 import unq.tpi.desapp.service.ProductService;
@@ -55,5 +60,32 @@ public class App {
                 System.out.println("Unable to save products: " + e.getMessage());
             }
         };
+    }
+
+    @Bean
+    CommandLineRunner templaterunner(ProductService productService) {
+        return args -> {
+            // read json and write to db
+            ObjectMapper mapper = new ObjectMapper();
+            TypeReference<List<Template>> typeReference = new TypeReference<List<Template>>(){};
+            InputStream inputStream = TypeReference.class.getResourceAsStream("/json/templates.json");
+            try {
+                List<Template> templates = mapper.readValue(inputStream,typeReference);
+                productService.createTemplates(templates);
+                System.out.println("Template Saved!");
+            } catch (IOException e){
+                System.out.println("Unable to save templates: " + e.getMessage());
+            }
+        };
+    }
+
+    @Configuration
+    @EnableWebMvc
+    public class WebConfig implements WebMvcConfigurer {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**");
+        }
     }
 }
