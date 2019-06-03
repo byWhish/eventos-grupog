@@ -1,6 +1,6 @@
 package unq.tpi.desapp.builders;
 
-import unq.tpi.desapp.model.EventTemplate;
+import unq.tpi.desapp.model.Template;
 import unq.tpi.desapp.model.Product;
 import unq.tpi.desapp.model.User;
 
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class EventTemplateBuilder {
-    private EventTemplate eventTemplate;
+    private Template template;
 
     public EventTemplateBuilder() {
-        eventTemplate = new EventTemplate("name", new ArrayList<>());
+        template = new Template("name", new ArrayList<>());
         withName("name");
         withProducts(new ArrayList<>());
         withUsers(new ArrayList<>());
@@ -22,24 +22,24 @@ public final class EventTemplateBuilder {
     }
 
     public EventTemplateBuilder withName(String name) {
-        eventTemplate.setName(name);
-        eventTemplate.getName();
+        template.setName(name);
+        template.getName();
         return this;
     }
 
     public EventTemplateBuilder withProducts(List<Product> products) {
-        eventTemplate.setProducts(products);
-        eventTemplate.getProducts();
+        template.setProducts(products);
+        template.getProducts();
         return this;
     }
 
     public EventTemplateBuilder withUsers(List<User> users) {
-        eventTemplate.setUsers(users);
-        eventTemplate.getUsers();
+        template.setUsers(users);
+        template.getUsers();
         return this;
     }
 
-    public EventTemplate build() {
-        return eventTemplate;
+    public Template build() {
+        return template;
     }
 }
