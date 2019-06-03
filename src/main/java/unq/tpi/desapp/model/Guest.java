@@ -100,4 +100,12 @@ public class Guest {
     }
 
     public Long getId() { return id; }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public Event getEvent() {
+        return this.event;
+    }
 }

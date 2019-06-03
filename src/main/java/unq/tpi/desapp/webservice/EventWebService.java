@@ -1,11 +1,14 @@
 package unq.tpi.desapp.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.web.bind.annotation.*;
 import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.request.EventRequest;
+import unq.tpi.desapp.service.EmailSender;
 import unq.tpi.desapp.service.EventService;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.List;
 
