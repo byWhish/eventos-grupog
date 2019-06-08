@@ -25,7 +25,7 @@ public class EventWebService {
     }
 
     @GetMapping("/{eventId}")
-    public Event putEvent(@PathVariable Long eventId) {
+    public Event getEvent(@PathVariable Long eventId) {
         return eventService.findEvent(eventId);
     }
 
