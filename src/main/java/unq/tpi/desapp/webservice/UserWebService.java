@@ -9,7 +9,7 @@ import unq.tpi.desapp.service.AccountsService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("api/private/user")
 public class UserWebService {
 
     @Autowired
