@@ -11,7 +11,7 @@ import unq.tpi.desapp.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("api/private/product")
 public class ProductWebService {
 
     @Autowired
