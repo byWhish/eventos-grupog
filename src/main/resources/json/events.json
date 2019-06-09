@@ -1,0 +1,340 @@
+[
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "party",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      }
+    ],
+    "userIds": [2,3,4,5],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  }
+]

@@ -8,6 +8,7 @@ import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.EventRepository;
 import unq.tpi.desapp.request.EventRequest;
+import unq.tpi.desapp.request.UserRequest;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -85,5 +86,9 @@ public class EventService {
     @Transactional
     public List<Event> findPopular() {
         return eventRepository.findPopular();
+    }
+
+    public void createEvents(List<EventRequest> events) {
+        events.forEach( event -> this.createEvent(event));
     }
 }
