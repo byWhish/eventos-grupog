@@ -11,7 +11,7 @@ public class UserTest {
     @Test
     public void usersAreCreatedAsTheyHaveTo() {
         String name = "aName";
-        User user = new User(name, "aSurname", "aMail@mail.com", new Date());
+        User user = new User(name, "aSurname", "aMail@mail.com");
 
         assertEquals(user.getName(), name);
     }
