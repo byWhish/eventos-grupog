@@ -2,6 +2,8 @@ package unq.tpi.desapp.runners;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
@@ -17,6 +19,8 @@ import java.util.List;
 @Order(1)
 public class UserRunner implements CommandLineRunner {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserRunner.class);
+
     @Autowired
     AccountsService accountsService;
 
@@ -28,9 +32,9 @@ public class UserRunner implements CommandLineRunner {
             try {
                 List<UserRequest> users = mapper.readValue(inputStream,typeReference);
                 accountsService.createUsers(users);
-                System.out.println("Users Saved!");
+                LOGGER.info("Users Saved!");
             } catch (IOException e){
-                System.out.println("Unable to save users: " + e.getMessage());
+                LOGGER.error("Unable to save users: " + e.getMessage());
             }
     }
 }

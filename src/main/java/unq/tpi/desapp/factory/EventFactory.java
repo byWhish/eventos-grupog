@@ -1,6 +1,7 @@
 package unq.tpi.desapp.factory;
 
 import org.springframework.stereotype.Component;
+import unq.tpi.desapp.exception.InvalidEventException;
 import unq.tpi.desapp.model.event.*;
 
 import java.util.HashMap;
@@ -15,7 +16,9 @@ public class EventFactory {
 
     public Event getEventFromType(String type) {
         populateEvents();
-        return events.get(type);
+        Event event = events.get(type);
+        if (event == null) throw new InvalidEventException("El tipo de evento es incorrecto");
+        return event;
     }
 
     private void populateEvents() {

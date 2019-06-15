@@ -71,7 +71,6 @@ public class GuestService {
                     user.fullName() + " te invito a un evento el dia " + event.getHeldAt() +
                             ". Podes aceptar la invitacion en el siguiente link: " + confirmAssistanceUrl + guest.getId());
         } catch (MessagingException e) {
-            e.printStackTrace();
             throw new RuntimeException("No se pudo enviar el mail de invitacion al evento para el guest " + guest.getId());
         }
 

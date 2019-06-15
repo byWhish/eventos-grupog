@@ -2,6 +2,8 @@ package unq.tpi.desapp.runners;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
@@ -17,6 +19,8 @@ import java.util.List;
 @Order(4)
 public class EventRunner implements CommandLineRunner {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EventRunner.class);
+
     @Autowired
     EventService eventService;
 
@@ -28,9 +32,9 @@ public class EventRunner implements CommandLineRunner {
         try {
             List<EventRequest> events = mapper.readValue(inputStream,typeReference);
             eventService.createEvents(events);
-            System.out.println("Events Saved!");
+            LOGGER.info("Events Saved!");
         } catch (IOException e){
-            System.out.println("Unable to save events: " + e.getMessage());
+            LOGGER.error("Unable to save events: " + e.getMessage());
         }
     }
 }
