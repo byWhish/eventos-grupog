@@ -33,4 +33,9 @@ public class GuestWebService {
         guestService.cancelInvitation(guestId);
     }
 
+    @GetMapping("/amountToPay/{guestId}")
+    public Double amountToPay(@PathVariable Long guestId) {
+        return guestService.getAmountToPay(guestId);
+    }
+
 }
