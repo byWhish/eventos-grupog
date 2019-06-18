@@ -1,10 +1,11 @@
 package unq.tpi.desapp.webservice.restExceptionHandler;
 
-import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -14,9 +15,6 @@ import unq.tpi.desapp.exception.InvalidEventException;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -50,6 +48,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         ConstraintViolation constraintViolation = ex.getConstraintViolations().stream().findFirst().get();
         validationError.setMessage(constraintViolation.getMessage());
         validationError.setField(constraintViolation.getPropertyPath().toString());
+
+        return buildResponseEntity(validationError);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        ValidationError validationError = new ValidationError(HttpStatus.BAD_REQUEST);
+
+        FieldError error = ex.getBindingResult().getFieldError();
+        validationError.setMessage(error.getDefaultMessage());
+        validationError.setField(error.getField());
 
         return buildResponseEntity(validationError);
     }

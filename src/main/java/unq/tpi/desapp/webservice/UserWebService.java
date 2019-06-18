@@ -7,6 +7,7 @@ import unq.tpi.desapp.request.ProfileRequest;
 import unq.tpi.desapp.request.UserRequest;
 import unq.tpi.desapp.service.AccountsService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class UserWebService {
     AccountsService accountsService;
 
     @PostMapping
-    public User postUser(@RequestBody UserRequest userRequest) {
+    public User postUser(@Valid @RequestBody UserRequest userRequest) {
         return accountsService.createUser(userRequest);
     }
 

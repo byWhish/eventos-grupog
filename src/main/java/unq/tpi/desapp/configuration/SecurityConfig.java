@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .configure(http)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/public/").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/private/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/private/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/private-scoped").hasAuthority("read:messages");
         http.headers().frameOptions().sameOrigin();
     }
