@@ -53,7 +53,6 @@ public class PartyTest {
     public void whenTheOwnerHaveToPayWeGetTheAmount() {
         Product product = new ProductBuilder().getProduct();
         Guest guest = createGuestThatConfirmedAssistance();
-        guest.setOwner(Boolean.TRUE);
         Event event = getPartyBuilder()
                 .withProducts(Arrays.asList(product))
                 .withGuests(Arrays.asList(guest))
@@ -66,12 +65,11 @@ public class PartyTest {
     @Test
     public void whenAGuestHaveToPayHeDoesntHaveToPayAnything() {
         Guest guest = createGuestThatConfirmedAssistance();
-        guest.setOwner(Boolean.FALSE);
         Event event = getPartyBuilder()
                 .withGuests(Arrays.asList(guest))
                 .getEvent();
 
-        assertEquals(event.amountToPay(guest), (Double) 0.0);
+        assertEquals(event.amountToPay(guest), event.totalAmount());
     }
 
     private EventBuilder getPartyBuilder() {

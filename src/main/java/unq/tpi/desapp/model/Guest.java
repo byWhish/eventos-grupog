@@ -1,11 +1,14 @@
 package unq.tpi.desapp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.apache.commons.codec.digest.DigestUtils;
 import unq.tpi.desapp.model.event.Event;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @Table(name="Guest")
@@ -19,7 +22,7 @@ public class Guest {
     @JoinColumn(name = "user_id")
     User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn( name = "event_id")
     @JsonBackReference
     Event event;
@@ -33,7 +36,7 @@ public class Guest {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     List<Product> products;
 
-    Boolean isOwner;
+    private String hash;
 
     public Guest() {}
 
@@ -42,7 +45,13 @@ public class Guest {
         this.user = user;
         this.confirmedAssistance = Boolean.FALSE;
         this.products = new ArrayList<>();
-        this.isOwner = false;
+        generateHash();
+    }
+
+    public void generateHash() {
+        if (this.hash != null) return;
+        String originalString = new Date().toString() + user.getName() + event.getName() + new Random().nextInt(Integer.MAX_VALUE);
+        this.hash = DigestUtils.sha256Hex(originalString);
     }
 
     public Boolean assists() {
@@ -96,14 +105,6 @@ public class Guest {
         this.products = products;
     }
 
-    public Boolean isOwner() {
-        return isOwner;
-    }
-
-    public void setOwner(Boolean owner) {
-        this.isOwner = owner;
-    }
-
     public Long getId() { return id; }
 
     public User getUser() {
@@ -112,5 +113,9 @@ public class Guest {
 
     public Event getEvent() {
         return this.event;
+    }
+
+    public String getHash() {
+        return this.hash;
     }
 }

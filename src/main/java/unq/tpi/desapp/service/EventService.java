@@ -31,7 +31,7 @@ public class EventService {
     @Transactional
     public Event createEvent(EventRequest eventRequest) {
         Event event = eventRepository.save(requestToEvent(eventRequest));
-//        event.getGuests().stream().forEach(guest -> guestService.sendInvitationMail(guest));
+        event.getGuests().stream().forEach(guest -> guestService.sendInvitationMail(guest));
         return event;
     }
 
