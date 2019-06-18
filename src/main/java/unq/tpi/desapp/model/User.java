@@ -3,7 +3,6 @@ package unq.tpi.desapp.model;
 import javax.persistence.*;
 import java.util.Date;
 
-
 @Entity
 public class User {
 
@@ -17,8 +16,6 @@ public class User {
 
     @Column(unique = true)
     private String email;
-
-    private String password;
 
     private Date birthDate;
 

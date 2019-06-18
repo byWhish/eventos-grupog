@@ -1,5 +1,7 @@
 package unq.tpi.desapp.webservice.restExceptionHandler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
+
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         String error = "Malformed JSON request";
@@ -29,6 +33,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
+        LOGGER.error("EntityNotFoundException", ex);
         ApiError apiError = new ApiError(NOT_FOUND);
         apiError.setMessage(ex.getMessage());
         return buildResponseEntity(apiError);
@@ -36,6 +41,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidEventException.class)
     protected ResponseEntity<Object> handleInvalidEventException(InvalidEventException ex) {
+        LOGGER.error("InvalidEventException", ex);
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
         apiError.setMessage(ex.getMessage());
         return buildResponseEntity(apiError);
@@ -43,6 +49,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     protected ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex) {
+        LOGGER.error("ConstraintViolationException", ex);
         ValidationError validationError = new ValidationError(HttpStatus.BAD_REQUEST);
 
         ConstraintViolation constraintViolation = ex.getConstraintViolations().stream().findFirst().get();
@@ -54,6 +61,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        LOGGER.error("MethodArgumentNotValidException", ex);
         ValidationError validationError = new ValidationError(HttpStatus.BAD_REQUEST);
 
         FieldError error = ex.getBindingResult().getFieldError();
@@ -65,6 +73,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
     protected ResponseEntity<Object> handleNullPointerException(NullPointerException ex) {
+        LOGGER.error("NullPointerException", ex);
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR);
         apiError.setMessage("Hubo un error en el sistema, intente mas tarde");
         return buildResponseEntity(apiError);
@@ -72,6 +81,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     protected ResponseEntity<Object> handleThrowable(Throwable ex) {
+        LOGGER.error("Exception", ex);
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR);
         apiError.setMessage("Hubo un error en el sistema, intente mas tarde");
         return buildResponseEntity(apiError);
