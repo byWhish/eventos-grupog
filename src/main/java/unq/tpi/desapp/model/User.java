@@ -26,15 +26,26 @@ public class User {
     @JoinColumn( name = "account_id")
     private Account account;
 
-    public User(String name, String surname, String email, Date birthDate){
+    public User(String name, String surname, String email){
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.birthDate = birthDate;
         this.account = new Account();
     }
 
     public User(){}
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public String getEmail() {
         return email;

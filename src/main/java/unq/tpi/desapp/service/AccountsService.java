@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.UserRepository;
+import unq.tpi.desapp.request.ProfileRequest;
 import unq.tpi.desapp.request.UserRequest;
 
 import java.util.List;
@@ -19,8 +20,7 @@ public class AccountsService {
         User user = new User(
                 userRequest.getName(),
                 userRequest.getSurname(),
-                userRequest.getEmail(),
-                userRequest.getBirthDate()
+                userRequest.getEmail()
         );
 
         return this.saveUser(user);
@@ -49,5 +49,22 @@ public class AccountsService {
 
     public List<User> findAllUsers() {
         return (List<User>) this.userRepository.findAll();
+    }
+
+    public User createUserFromProfile(ProfileRequest profile) {
+        User user = new User(
+                profile.getGiven_name(),
+                profile.getFamily_name(),
+                profile.getEmail()
+        );
+        return this.saveUser(user);
+    }
+
+    public User authProfile(ProfileRequest profile) {
+        User user = this.userRepository.findByEmail(profile.getEmail());
+        if (user == null){
+            return this.createUserFromProfile(profile);
+        }
+        return user;
     }
 }

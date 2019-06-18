@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.model.event.Event;
+import unq.tpi.desapp.model.event.PartyEvent;
 import unq.tpi.desapp.persistence.GuestRepository;
 import unq.tpi.desapp.request.InvitationRequest;
 
 import javax.mail.MessagingException;
+import javax.print.Doc;
 import javax.transaction.Transactional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -74,5 +76,11 @@ public class GuestService {
             throw new RuntimeException("No se pudo enviar el mail de invitacion al evento para el guest " + guest.getId());
         }
 
+    }
+
+    @Transactional
+    public Double getAmountToPay(Long guestId) {
+        Guest guest = this.findById(guestId);
+        return guest.amountToPay();
     }
 }
