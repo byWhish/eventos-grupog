@@ -42,6 +42,7 @@ public class Guest {
         this.user = user;
         this.confirmedAssistance = Boolean.FALSE;
         this.products = new ArrayList<>();
+        this.isOwner = false;
     }
 
     public Boolean assists() {
@@ -53,6 +54,10 @@ public class Guest {
                 .anyMatch(guestProduct ->
                         guestProduct.getName().equals(product.getName())
                 );
+    }
+
+    public Double amountToPay() {
+        return this.event.amountToPay(this);
     }
 
     public void confirmAssistance() {
