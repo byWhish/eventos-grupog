@@ -1,6 +1,8 @@
 package unq.tpi.desapp.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.request.EventRequest;
@@ -17,13 +19,13 @@ public class EventWebService {
     EventService eventService;
 
     @PostMapping
-    public Event postEvent(@Valid @RequestBody EventRequest eventRequest) {
-        return eventService.createEvent(eventRequest);
+    public ResponseEntity<Event> postEvent(@Valid @RequestBody EventRequest eventRequest) {
+        return new ResponseEntity<>(eventService.createEvent(eventRequest), HttpStatus.CREATED);
     }
 
     @GetMapping("/{eventId}")
-    public Event getEvent(@PathVariable Long eventId) {
-        return eventService.findEvent(eventId);
+    public ResponseEntity<Event> getEvent(@PathVariable Long eventId) {
+        return new ResponseEntity<>(eventService.findEvent(eventId), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{eventId}")
@@ -32,17 +34,17 @@ public class EventWebService {
     }
 
     @GetMapping("/lastest/{userId}")
-    public List<Event> lastestEvents(@PathVariable Long userId) {
-        return eventService.findLastest(userId);
+    public ResponseEntity<List<Event>> lastestEvents(@PathVariable Long userId) {
+        return new ResponseEntity<>(eventService.findLastest(userId), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/ongoing/{userId}")
-    public List<Event> ongoingEvents(@PathVariable Long userId) {
-        return eventService.findOngoing(userId);
+    public ResponseEntity<List<Event>> ongoingEvents(@PathVariable Long userId) {
+        return new ResponseEntity<>(eventService.findOngoing(userId), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/popular")
-    public List<Event> popularEvents() {
-        return eventService.findPopular();
+    public ResponseEntity<List<Event>> popularEvents() {
+        return new ResponseEntity<>(eventService.findPopular(), HttpStatus.ACCEPTED);
     }
 }

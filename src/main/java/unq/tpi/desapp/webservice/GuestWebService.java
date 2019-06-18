@@ -1,12 +1,12 @@
 package unq.tpi.desapp.webservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import unq.tpi.desapp.model.Guest;
 import unq.tpi.desapp.request.InvitationRequest;
 import unq.tpi.desapp.service.GuestService;
-
-import java.util.logging.Logger;
 
 @RestController
 public class GuestWebService {
@@ -14,12 +14,11 @@ public class GuestWebService {
     @Autowired
     GuestService guestService;
 
-    private Logger logger = Logger.getGlobal();
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(GuestWebService.class);
 
     @PostMapping("/inviteUser")
     public Guest inviteUser(@RequestBody InvitationRequest invitationRequest) {
-        logger.info("inicia proceso de /inviteUser");
+        LOGGER.info("inicia proceso de /inviteUser");
         return guestService.inviteUser(invitationRequest);
     }
 
