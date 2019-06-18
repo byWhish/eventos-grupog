@@ -9,6 +9,7 @@ import unq.tpi.desapp.model.event.Event;
 import unq.tpi.desapp.model.event.PartyEvent;
 import unq.tpi.desapp.persistence.GuestRepository;
 import unq.tpi.desapp.request.InvitationRequest;
+import unq.tpi.desapp.response.GuestResponse;
 
 import javax.mail.MessagingException;
 import javax.print.Doc;
@@ -50,28 +51,41 @@ public class GuestService {
     }
 
     @Transactional
-    public Guest confirmAssistance(Long guestId) {
+    public GuestResponse confirmAssistance(Long guestId) {
         Guest guest = findById(guestId);
+        return confirmAssistanceFor(guest);
+    }
+
+    @Transactional
+    public GuestResponse confirmAssistanceWithHash(String hash) {
+        Guest guest = guestRepository.findByHash(hash).orElseThrow(() -> new IllegalArgumentException("No se encontro guest con el hash " + hash));
+        return confirmAssistanceFor(guest);
+    }
+
+    private GuestResponse confirmAssistanceFor(Guest guest) {
         guest.confirmAssistance();
         guestRepository.save(guest);
-        return guest;
+        guest.getEvent();
+        return new GuestResponse(guest, guest.getEvent());
     }
 
     @Transactional
     public Guest findById(Long guestId) {
         return guestRepository.findById(guestId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid guest id " + guestId));
+                .orElseThrow(() -> new IllegalArgumentException("No se encontro guest con el id " + guestId));
     }
 
+    @Transactional
     public void sendInvitationMail(Guest guest) {
         User user = guest.getUser();
         Event event = guest.getEvent();
+        guest.generateHash();
         try {
             mailSender.sendmail(
                     user.getEmail(),
                     "Fuiste invitado al evento " + event.getName(),
                     user.fullName() + " te invito a un evento el dia " + event.getHeldAt() +
-                            ". Podes aceptar la invitacion en el siguiente link: " + confirmAssistanceUrl + guest.getId());
+                            ". Podes aceptar la invitacion en el siguiente link: " + confirmAssistanceUrl + "?hash=" + guest.getHash());
         } catch (MessagingException e) {
             throw new RuntimeException("No se pudo enviar el mail de invitacion al evento para el guest " + guest.getId());
         }
