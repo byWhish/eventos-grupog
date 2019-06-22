@@ -16,5 +16,5 @@ public class ExternalAccount extends Account{
     }
 
     @Override
-    public void debit(Movement movement) throws Exception {}
+    public void debit(Movement movement) {}
 }

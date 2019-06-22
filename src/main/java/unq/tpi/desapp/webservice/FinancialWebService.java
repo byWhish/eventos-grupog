@@ -17,17 +17,17 @@ public class FinancialWebService {
     private FinancialService financialService;
 
     @PostMapping
-    public void processMovement(@RequestBody Movement movement) throws Exception {
+    public void processMovement(@RequestBody Movement movement) {
         financialService.processMovement(movement);
     }
 
     @PostMapping("/external/credit")
-    public void processExternalCredit(@RequestBody ExternalMovementRequest externalMovement) throws Exception {
+    public void processExternalCredit(@RequestBody ExternalMovementRequest externalMovement) {
         financialService.processMovement(financialService.generateCreditMovement(externalMovement));
     }
 
     @PostMapping("/external/debit")
-    public void processExternalDebit(@RequestBody ExternalMovementRequest externalMovement) throws Exception {
+    public void processExternalDebit(@RequestBody ExternalMovementRequest externalMovement) {
         financialService.processMovement(financialService.generateDebitMovement(externalMovement));
     }
 

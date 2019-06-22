@@ -38,7 +38,7 @@ public class GuestService {
     @Transactional
     public Guest inviteUser(InvitationRequest invitationRequest) {
         Event event = eventService.findEvent(invitationRequest.getEventId());
-        User user = accountsService.findUserById(invitationRequest.getUserId()).orElse(null);
+        User user = accountsService.findUserById(invitationRequest.getUserId());
 
         Guest guest = new Guest(event, user);
         guestRepository.save(guest);

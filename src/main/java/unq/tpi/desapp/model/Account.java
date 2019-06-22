@@ -1,5 +1,7 @@
 package unq.tpi.desapp.model;
 
+import unq.tpi.desapp.exception.InsufficientFundsException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +11,8 @@ import javax.persistence.Id;
 @Entity
 public class Account {
 
+    public static final Long EVENTOS_GRUPOG_ID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,8 +21,8 @@ public class Account {
 
     private String alias;
 
-    public void debit(Movement movement) throws Exception {
-        if ( movement.amount > this.balance ) throw new Exception("Insuficient founds");
+    public void debit(Movement movement) {
+        if ( movement.amount > this.balance ) throw new InsufficientFundsException("Insuficient founds");
         this.balance = this.balance - movement.amount;
     }
 
