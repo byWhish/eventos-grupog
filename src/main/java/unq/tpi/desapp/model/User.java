@@ -2,6 +2,7 @@ package unq.tpi.desapp.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -18,19 +19,23 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String password;
-
     private Date birthDate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Loan> loans;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn( name = "account_id")
     private Account account;
+
+    private Boolean isDefaulter;
 
     public User(String name, String surname, String email){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.account = new Account();
+        this.isDefaulter = Boolean.FALSE;
     }
 
     public User(){}
@@ -83,5 +88,33 @@ public class User {
 
     public String fullName() {
         return name + " " + surname;
+    }
+
+    public Boolean getIsDefaulter() {
+        return isDefaulter;
+    }
+
+    public void setIsDefaulter(Boolean isDefaulter) {
+        this.isDefaulter = isDefaulter;
+    }
+
+    public void applyLoan(Loan loan) {
+        getDefaulterState().applyLoan(this);
+    }
+
+    private DefaulterState getDefaulterState() {
+        return DefaulterState.stateFor(this);
+    }
+
+    protected void applyDefaulterLoan() {
+        throw new RuntimeException("No se le puede dar un prestamo a un usuario moroso");
+    }
+
+    public void applyNotDefaulterLoan() {}
+
+    public void handleDefaultment() {
+        Integer amountOfUnpaidInstallments = (int) this.loans.stream().filter(loan -> !loan.getFullyPaid()).flatMap(loan -> loan.getInstallments().stream())
+                .filter(Installment::expired).count();
+        this.isDefaulter = amountOfUnpaidInstallments > 0;
     }
 }

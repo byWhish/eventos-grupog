@@ -68,8 +68,7 @@ public class EventService {
 
     private User getOwnerFromRequest(EventRequest eventRequest) {
         Long userId = eventRequest.getOwnerId();
-        return accountsService.findUserById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
+        return accountsService.findUserById(userId);
     }
 
     @Transactional

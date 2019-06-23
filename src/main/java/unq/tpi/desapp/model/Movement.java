@@ -1,22 +1,34 @@
 package unq.tpi.desapp.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Movement {
 
-    public Long originId;
-    public Long destinationId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @OneToOne
+    public Account origin;
+
+    @OneToOne
+    public Account destination;
+
     public Double amount;
     public Date timeStamp;
     public String description;
 
-    public Movement(Long originId, Long destinationId, Double amount, String description) {
-        this.originId = originId;
-        this.destinationId = destinationId;
+    public Movement(Account origin, Account destination, Double amount, String description) {
+        this.origin = origin;
+        this.destination = destination;
         this.amount = amount;
         this.description = description;
         this.timeStamp = new Date();
-    };
+        origin.debit(this);
+        destination.credit(this);
+    }
 
     public Movement() {}
 
@@ -28,23 +40,23 @@ public class Movement {
         this.timeStamp = timeStamp;
     }
 
-    public Long getOriginId() {
-        return originId;
+    public Account getOrigin() {
+        return origin;
     }
 
-    public void setOriginId(Long originId) {
-        this.originId = originId;
+    public void setOrigin(Account origin) {
+        this.origin = origin;
     }
 
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
 
-    public Long getDestinationId() {
-        return destinationId;
+    public Account getDestination() {
+        return destination;
     }
 
-    public void setDestinationId(Long destinationId) { this.destinationId = destinationId; }
+    public void setDestination(Account destination) { this.destination = destination; }
 
     public Double getAmount() {
         return amount;

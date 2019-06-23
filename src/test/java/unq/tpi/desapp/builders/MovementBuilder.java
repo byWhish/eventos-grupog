@@ -1,5 +1,6 @@
 package unq.tpi.desapp.builders;
 
+import unq.tpi.desapp.model.Account;
 import unq.tpi.desapp.model.Movement;
 
 import java.util.Date;
@@ -10,8 +11,8 @@ public final class MovementBuilder {
     public MovementBuilder() {
         movement = new Movement();
         withAmount(0.0);
-        withDestinationId(1L);
-        withOriginId(2L);
+        withDestinationId(AccountBuilder.anAccount().build());
+        withOriginId(AccountBuilder.anAccount().build());
         withTimeStamp(new Date());
     }
 
@@ -19,15 +20,15 @@ public final class MovementBuilder {
         return new MovementBuilder();
     }
 
-    public MovementBuilder withOriginId(Long originId) {
-        movement.setOriginId(originId);
-        movement.getOriginId();
+    public MovementBuilder withOriginId(Account originId) {
+        movement.setOrigin(originId);
+        movement.getOrigin();
         return this;
     }
 
-    public MovementBuilder withDestinationId(Long destinationId) {
-        movement.setDestinationId(destinationId);
-        movement.getDestinationId();
+    public MovementBuilder withDestinationId(Account destinationId) {
+        movement.setDestination(destinationId);
+        movement.getDestination();
         return this;
     }
 

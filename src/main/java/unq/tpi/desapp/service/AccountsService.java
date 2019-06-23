@@ -8,7 +8,6 @@ import unq.tpi.desapp.request.ProfileRequest;
 import unq.tpi.desapp.request.UserRequest;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AccountsService {
@@ -39,8 +38,8 @@ public class AccountsService {
         users.forEach( user -> this.saveUser(user));
     }
 
-    public Optional<User> findUserById(long id) {
-        return userRepository.findById(id);
+    public User findUserById(long id) {
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id " + id));
     }
 
     public List<User> findUsersByIds(List<Long> ids) {
