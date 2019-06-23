@@ -6,9 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
+@Inheritance
+@DiscriminatorColumn(name="type")
 public class Account {
 
     public static final Long EVENTOS_GRUPOG_ID = 1L;

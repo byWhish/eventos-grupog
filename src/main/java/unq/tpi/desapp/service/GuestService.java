@@ -1,11 +1,16 @@
 package unq.tpi.desapp.service;
 
+import org.hibernate.property.access.spi.BuiltInPropertyAccessStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import unq.tpi.desapp.model.Account;
 import unq.tpi.desapp.model.Guest;
+import unq.tpi.desapp.model.Movement;
 import unq.tpi.desapp.model.User;
+import unq.tpi.desapp.model.event.CommonAccountEvent;
 import unq.tpi.desapp.model.event.Event;
+import unq.tpi.desapp.model.event.MoneyCollectionEvent;
 import unq.tpi.desapp.model.event.PartyEvent;
 import unq.tpi.desapp.persistence.GuestRepository;
 import unq.tpi.desapp.request.InvitationRequest;
@@ -25,6 +30,9 @@ public class GuestService {
 
     @Autowired
     private AccountsService accountsService;
+
+    @Autowired
+    private FinancialService financialService;
 
     @Autowired
     private GuestRepository guestRepository;
@@ -70,6 +78,15 @@ public class GuestService {
     }
 
     @Transactional
+    public boolean payEvent(Long guestId) throws Exception {
+        Guest guest = guestRepository.findById(guestId).orElse(null);
+        MoneyCollectionEvent event = (MoneyCollectionEvent) guest.getEvent();
+        Double amountToPay = guest.amountToPay();
+        Movement movement = new Movement(guest.getUser().getAccount(), event.getAccount(), amountToPay, "Event payment");
+        return financialService.processMovement(movement);
+    }
+
+    @Transactional
     public Guest findById(Long guestId) {
         return guestRepository.findById(guestId)
                 .orElseThrow(() -> new IllegalArgumentException("No se encontro guest con el id " + guestId));
@@ -96,5 +113,10 @@ public class GuestService {
     public Double getAmountToPay(Long guestId) {
         Guest guest = this.findById(guestId);
         return guest.amountToPay();
+    }
+
+    public void payEvent(Guest guest, MoneyCollectionEvent event, Double amount){
+        Account guestAccount = guest.getUser().getAccount();
+        Account eventAccount = event.getAccount();
     }
 }

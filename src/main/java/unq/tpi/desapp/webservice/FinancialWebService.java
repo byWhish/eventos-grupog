@@ -1,16 +1,14 @@
 package unq.tpi.desapp.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import unq.tpi.desapp.model.Account;
 import unq.tpi.desapp.model.Movement;
 import unq.tpi.desapp.request.ExternalMovementRequest;
 import unq.tpi.desapp.service.FinancialService;
 
 @RestController
-@RequestMapping("/movement")
+@RequestMapping("/api/private/movement")
 public class FinancialWebService {
 
     @Autowired
@@ -22,13 +20,18 @@ public class FinancialWebService {
     }
 
     @PostMapping("/external/credit")
-    public void processExternalCredit(@RequestBody ExternalMovementRequest externalMovement) {
-        financialService.processMovement(financialService.generateCreditMovement(externalMovement));
+    public boolean processExternalCredit(@RequestBody ExternalMovementRequest externalMovement) {
+        return financialService.processMovement(financialService.generateCreditMovement(externalMovement));
     }
 
     @PostMapping("/external/debit")
-    public void processExternalDebit(@RequestBody ExternalMovementRequest externalMovement) {
-        financialService.processMovement(financialService.generateDebitMovement(externalMovement));
+    public boolean processExternalDebit(@RequestBody ExternalMovementRequest externalMovement) {
+        return financialService.processMovement(financialService.generateDebitMovement(externalMovement));
     }
 
+    @GetMapping("/account/{id}")
+    public Account getAccount(@PathVariable Long id) {
+        return financialService.findAccountById(id);
+    }
 }
+

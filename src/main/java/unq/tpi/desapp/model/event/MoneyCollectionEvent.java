@@ -32,6 +32,9 @@ public class MoneyCollectionEvent extends Event {
         this.account = account;
     }
 
+    public Account getAccount() {
+        return account;
+    }
 }
 
 
