@@ -31,7 +31,7 @@ public class EventService {
     @Transactional
     public Event createEvent(EventRequest eventRequest) {
         Event event = eventRepository.save(requestToEvent(eventRequest));
-//        event.getGuests().stream().forEach(guest -> guestService.sendInvitationMail(guest));
+        event.getGuests().stream().forEach(guest -> guestService.sendInvitationMail(guest));
         return event;
     }
 
@@ -68,8 +68,7 @@ public class EventService {
 
     private User getOwnerFromRequest(EventRequest eventRequest) {
         Long userId = eventRequest.getOwnerId();
-        return accountsService.findUserById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user id " + userId));
+        return accountsService.findUserById(userId);
     }
 
     @Transactional
