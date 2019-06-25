@@ -34,6 +34,11 @@ public class GuestWebService {
         return guestService.confirmAssistanceWithHash(hash);
     }
 
+    @PostMapping("/api/private/payEvent/{guestId}")
+    public boolean payEvent(@PathVariable Long guestId) throws Exception{
+        return guestService.payEvent(guestId);
+    }
+
     @DeleteMapping("/api/private/cancelInvitation/{guestId}")
     public void deleteInvitation(@PathVariable Long guestId) {
         guestService.cancelInvitation(guestId);

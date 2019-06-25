@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @Component
-@Order(1)
+@Order(2)
 public class UserRunner implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRunner.class);

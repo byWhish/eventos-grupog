@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 import unq.tpi.desapp.model.Movement;
 
 @Repository
-public interface MovementRepository extends CrudRepository<Movement, Long> {
-}
+public interface MovementRepository extends CrudRepository<Movement, Long> {}

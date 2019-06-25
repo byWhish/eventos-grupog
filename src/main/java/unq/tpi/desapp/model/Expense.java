@@ -20,6 +20,8 @@ public class Expense {
         this.amount = amount;
     }
 
+    public Expense(){}
+
     public Double getAmount() {
         return amount;
     }

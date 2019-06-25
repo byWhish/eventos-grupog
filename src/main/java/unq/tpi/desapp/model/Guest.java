@@ -29,6 +29,8 @@ public class Guest {
 
     Boolean confirmedAssistance;
 
+    Boolean payed;
+
     @ManyToMany
     @JoinTable(
             name = "GuestProduct",
@@ -44,6 +46,7 @@ public class Guest {
         this.event = event;
         this.user = user;
         this.confirmedAssistance = Boolean.FALSE;
+        this.payed = Boolean.FALSE;
         this.products = new ArrayList<>();
         generateHash();
     }
@@ -56,6 +59,14 @@ public class Guest {
 
     public Boolean assists() {
         return this.getConfirmedAssistance();
+    }
+
+    public Boolean getPayed() {
+        return payed;
+    }
+
+    public void setPayed(Boolean payed) {
+        this.payed = payed;
     }
 
     public Boolean collaboratesIn(Product product) {

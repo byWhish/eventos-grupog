@@ -1,21 +1,12 @@
 package unq.tpi.desapp.request;
 
 public class ExternalMovementRequest {
-    public Long externalId;
     public Long accountId;
     public Double amount;
-    public Long operationId;
     public String companyName;
+    public String description;
 
     public ExternalMovementRequest() {}
-
-    public Long getExternalId() {
-        return externalId;
-    }
-
-    public void setExternalId(Long externalId) {
-        this.externalId = externalId;
-    }
 
     public Long getAccountId() {
         return accountId;
@@ -33,19 +24,19 @@ public class ExternalMovementRequest {
         this.amount = amount;
     }
 
-    public Long getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(Long operationId) {
-        this.operationId = operationId;
-    }
-
     public String getCompanyName() {
         return companyName;
     }
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

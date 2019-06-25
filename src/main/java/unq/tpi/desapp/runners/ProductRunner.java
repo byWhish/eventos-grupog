@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @Component
-@Order(2)
+@Order(3)
 public class ProductRunner implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRunner.class);
