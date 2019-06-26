@@ -60,4 +60,8 @@ public class Account {
     public void setAlias(String alias) {
         this.alias = alias;
     }
+
+    public void applyLoan(Loan loan) {
+        this.balance += loan.getAmount();
+    }
 }

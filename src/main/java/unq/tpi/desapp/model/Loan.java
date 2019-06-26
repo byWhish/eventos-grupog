@@ -29,10 +29,10 @@ public class Loan {
     public Loan() {}
 
     public Loan(Double amount, Integer amountOfInstallments, User user) {
-        user.applyLoan(this);
         this.user = user;
         this.fullyPaid = false;
         this.amount = amount;
+        user.applyLoan(this);
         this.installments = new ArrayList<Installment>();
         IntStream.rangeClosed(1, amountOfInstallments).forEach(index ->
                 installments.add(new Installment(amount / amountOfInstallments, index, this))

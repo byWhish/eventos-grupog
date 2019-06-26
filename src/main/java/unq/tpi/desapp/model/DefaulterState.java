@@ -14,5 +14,5 @@ public abstract class DefaulterState {
 
     protected abstract Boolean canHandle(User user);
 
-    public abstract void applyLoan(User user);
+    public abstract void applyLoan(User user, Loan loan);
 }

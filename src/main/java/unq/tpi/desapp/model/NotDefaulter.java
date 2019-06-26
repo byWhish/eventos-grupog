@@ -8,7 +8,7 @@ public class NotDefaulter extends DefaulterState {
     }
 
     @Override
-    public void applyLoan(User user) {
-        user.applyNotDefaulterLoan();
+    public void applyLoan(User user, Loan loan) {
+        user.applyNotDefaulterLoan(loan);
     }
 }

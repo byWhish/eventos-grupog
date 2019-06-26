@@ -11,6 +11,7 @@ import unq.tpi.desapp.model.Movement;
 import unq.tpi.desapp.model.User;
 import unq.tpi.desapp.persistence.LoanRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -25,7 +26,7 @@ public class LoanService {
     LoanRepository loanRepository;
 
     @Autowired
-    private FinancialService finantialService;
+    private FinancialService financialService;
 
     @Scheduled(cron = "0 * * ? * *")
     public void payOngoingLoans() {
@@ -33,7 +34,7 @@ public class LoanService {
         loans.stream().forEach(loan -> {
                     try {
                         Movement movement = loan.nextInstallment().pay();
-                        finantialService.processMovement(movement);
+                        financialService.processMovement(movement);
                     } catch (InsufficientFundsException ex)
                     {
                         LOGGER.error("No se pudo hacer el pago del prestamo " + loan.getId());
@@ -44,10 +45,12 @@ public class LoanService {
         );
     }
 
+    @Transactional
     public Loan applyLoan(Long userId) {
         User user = userService.findUserById(userId);
         Loan loan = new Loan(1000.0, 6, user);
         loanRepository.save(loan);
+        userService.saveUser(user);
         return loan;
     }
 }
