@@ -98,7 +98,7 @@ public class User {
     }
 
     public void applyLoan(Loan loan) {
-        getDefaulterState().applyLoan(this);
+        getDefaulterState().applyLoan(this, loan);
     }
 
     private DefaulterState getDefaulterState() {
@@ -109,7 +109,9 @@ public class User {
         throw new RuntimeException("No se le puede dar un prestamo a un usuario moroso");
     }
 
-    public void applyNotDefaulterLoan() {}
+    public void applyNotDefaulterLoan(Loan loan) {
+        this.account.applyLoan(loan);
+    }
 
     public void handleDefaultment() {
         Integer amountOfUnpaidInstallments = (int) this.loans.stream().filter(loan -> !loan.getFullyPaid()).flatMap(loan -> loan.getInstallments().stream())
