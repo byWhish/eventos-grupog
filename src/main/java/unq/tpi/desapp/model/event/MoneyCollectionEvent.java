@@ -3,10 +3,7 @@ package unq.tpi.desapp.model.event;
 import unq.tpi.desapp.model.Account;
 import unq.tpi.desapp.model.Guest;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(MoneyCollectionEvent.TYPE)
@@ -14,7 +11,7 @@ public class MoneyCollectionEvent extends Event {
 
     public static final String TYPE = "moneyCollection";
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     Account account;
 
