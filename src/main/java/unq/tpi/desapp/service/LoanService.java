@@ -30,19 +30,34 @@ public class LoanService {
 
     @Scheduled(cron = "0 * * ? * *")
     public void payOngoingLoans() {
+        LOGGER.info("Comienza el proceso de pago de cuotas");
         List<Loan> loans = loanRepository.findOngoingLoans();
-        loans.stream().forEach(loan -> {
-                    try {
-                        Movement movement = loan.nextInstallment().pay();
-                        financialService.processMovement(movement);
-                    } catch (InsufficientFundsException ex)
-                    {
-                        LOGGER.error("No se pudo hacer el pago del prestamo " + loan.getId());
-                    }
-                    loanRepository.save(loan);
-                    userService.saveUser(loan.getUser());
-                }
-        );
+        payLoans(loans);
+    }
+
+    private void payLoans(List<Loan> loans) {
+        loans.stream().forEach(loan -> payLoan(loan, Boolean.FALSE));
+    }
+
+    private void payLoan(Loan loan, Boolean shouldFail) {
+        try {
+            loan.installmentsToPay().stream().forEach(installment -> {
+                Movement movement = installment.pay();
+                financialService.processMovement(movement);
+            });
+        } catch (InsufficientFundsException ex)
+        {
+            LOGGER.error("No se pudo hacer el pago del prestamo " + loan.getId());
+            if (shouldFail) throw ex;
+        }
+        loanRepository.save(loan);
+        userService.saveUser(loan.getUser());
+    }
+
+    @Transactional
+    public void payUserDebt(Long loanId) {
+        Loan loan = loanRepository.findById(loanId).get();
+        payLoan(loan, Boolean.TRUE);
     }
 
     @Transactional
@@ -52,5 +67,9 @@ public class LoanService {
         loanRepository.save(loan);
         userService.saveUser(user);
         return loan;
+    }
+
+    public List<Loan> listLoans(Long userId) {
+        return loanRepository.findAllByUser(userId);
     }
 }
