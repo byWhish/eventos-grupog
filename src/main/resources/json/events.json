@@ -1,7 +1,7 @@
 [
   {
-    "type": "party",
-    "name": "Fiesta",
+    "type": "moneyCollection",
+    "name": "Fiesta Loca",
     "description": "Fiesta",
     "products": [
       {
@@ -18,9 +18,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -44,9 +74,151 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "basket",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
+      }
+    ],
+    "userIds": [2,3,4,5,6,7,8],
+    "ownerId": 1,
+    "deadline": "2019-12-25",
+    "heldAt": "2019-12-30"
+  },
+  {
+    "type": "commonAccount",
+    "name": "Fiesta",
+    "description": "Fiesta",
+    "products": [
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Asado"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Fernet"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
+      }
+    ],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -70,9 +242,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -96,9 +298,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -122,9 +354,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -148,9 +410,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -174,9 +466,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -200,9 +522,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -226,9 +578,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -252,9 +634,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
@@ -278,61 +690,39 @@
         "price": "10.0",
         "amountLimit": 1,
         "name": "Manaos"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Pan"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Ensalada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Picada"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Agua"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Cimichurri"
+      },
+      {
+        "price": "10.0",
+        "amountLimit": 1,
+        "name": "Verduras"
       }
     ],
-    "userIds": [2,3,4,5],
-    "ownerId": 1,
-    "deadline": "2019-12-25",
-    "heldAt": "2019-12-30"
-  },
-  {
-    "type": "party",
-    "name": "Fiesta",
-    "description": "Fiesta",
-    "products": [
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Asado"
-      },
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Fernet"
-      },
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Manaos"
-      }
-    ],
-    "userIds": [2,3,4,5],
-    "ownerId": 1,
-    "deadline": "2019-12-25",
-    "heldAt": "2019-12-30"
-  },
-  {
-    "type": "party",
-    "name": "Fiesta",
-    "description": "Fiesta",
-    "products": [
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Asado"
-      },
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Fernet"
-      },
-      {
-        "price": "10.0",
-        "amountLimit": 1,
-        "name": "Manaos"
-      }
-    ],
-    "userIds": [2,3,4,5],
+    "userIds": [2,3,4,5,6,7,8],
     "ownerId": 1,
     "deadline": "2019-12-25",
     "heldAt": "2019-12-30"
