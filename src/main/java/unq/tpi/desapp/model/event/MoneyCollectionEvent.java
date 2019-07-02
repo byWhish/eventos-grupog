@@ -22,7 +22,11 @@ public class MoneyCollectionEvent extends Event {
 
     @Override
     public Double amountToPay(Guest guest) {
-        return totalAmount() / collaborators().size();
+        if(collaborators().isEmpty()){
+            return 0.0;
+        } else {
+            return totalAmount() / collaborators().size();
+        }
     }
 
     public void setAccount(Account account) {

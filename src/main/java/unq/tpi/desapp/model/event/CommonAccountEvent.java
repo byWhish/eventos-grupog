@@ -27,6 +27,8 @@ public class CommonAccountEvent extends MoneyCollectionEvent {
         return this.expenses.stream().mapToDouble(Expense::getAmount).sum();
     }
 
+    public Double amountToPay() { return this.getExpenses() / collaborators().size(); }
+
     public void informExpenses(Expense expense) {
         this.expenses.add(expense);
     }
